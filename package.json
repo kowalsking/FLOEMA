@@ -4,7 +4,9 @@
   "description": "Building an immersive creative website from scratch without frameworks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack -p --progress --confif webpack.config.build.js",
+    "development": "webpack-dev-server --progress --config webpack.config.developmnet.js",
+    "start": "npm run development"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/kowalsking/FLOEMA/issues"
   },
-  "homepage": "https://github.com/kowalsking/FLOEMA#readme"
+  "homepage": "https://github.com/kowalsking/FLOEMA#readme",
+  "devDependencies": {
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0",
+    "webpack-merge": "^5.8.0"
+  }
 }
