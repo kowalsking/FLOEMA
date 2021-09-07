@@ -37,6 +37,11 @@ module.exports = {
           to: ''
         }
       ]
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 }
