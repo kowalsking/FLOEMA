@@ -25,6 +25,12 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0",
     "file-loader": "^6.2.0",
     "glslify-loader": "^2.0.0",
     "image-minimizer-webpack-plugin": "^2.2.0",
@@ -42,5 +48,7 @@
     "webpack-dev-server": "^4.1.0",
     "webpack-merge": "^5.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "imagemin-webpack-plugin": "^2.4.2"
+  }
 }
