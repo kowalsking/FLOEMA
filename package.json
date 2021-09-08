@@ -26,6 +26,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
+    "image-minimizer-webpack-plugin": "^2.2.0",
     "mini-css-extract-plugin": "^2.2.2",
     "postcss-loader": "^6.1.1",
     "sass": "^1.39.0",

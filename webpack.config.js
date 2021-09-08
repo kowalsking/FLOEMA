@@ -3,10 +3,10 @@ const path = require('path')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const IS_DEVELOPLMENT = process.env.NODE_ENV === 'dev'
+
 const dirApp = path.join(__dirname, 'app')
-const dirImages = path.join(__dirname, 'images')
-const dirVideos = path.join(__dirname, 'videos')
 const dirShared = path.join(__dirname, 'shared')
 const dirStyles = path.join(__dirname, 'styles')
 const dirNode = 'node_modules'
@@ -21,10 +21,8 @@ module.exports = {
   resolve: {
     modules: [
       dirApp,
-      dirImages,
       dirShared,
       dirStyles,
-      dirVideos,
       dirNode
     ]
   },
@@ -47,8 +45,20 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [
+          ["gifsicle", { interlaced: true }],
+          ["jpegtran", { progressive: true }],
+          ["optipng", { optimizationLevel: 5 }]
+        ],
+      },
+    }),
   ],
+
+
 
   module: {
     rules: [
@@ -82,7 +92,9 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
         loader: 'file-loader',
         options: {
-
+          name (file) {
+            return '[name].[ext]'
+          }
         }
       }
     ]
