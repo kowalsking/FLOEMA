@@ -8,7 +8,7 @@
     "backend:development": "nodemon app.js",
     "frontend:build": "webpack --progress --config webpack.config.build.js",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "npm run development"
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "repository": {
     "type": "git",
@@ -53,8 +53,10 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "concurrently": "^6.2.1",
     "express": "^4.17.1",
     "imagemin-webpack-plugin": "^2.4.2",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "pug": "^3.0.2"
   }
 }
