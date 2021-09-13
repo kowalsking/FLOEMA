@@ -39,13 +39,12 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
   initApi(req).then(api => {
-    api.query(Prismic.Predicates.any('document.type', ['about', 'meta'])).then(response => {
+    api.query(Prismic.Predicates.at('document.type', 'about')).then(response => {
       const { results } = response
-      const [about, meta] = results
-      console.log(about, meta)
+      const [about] = results
+      console.log('1s', about.data.body)
       res.render('pages/about', {
-        about,
-        meta
+        about
       })
     })
   })
