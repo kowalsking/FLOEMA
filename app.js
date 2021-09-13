@@ -15,7 +15,7 @@ const initApi = req => {
   })
 }
 
-const handleLinkResolver = (doc) => {
+const handleLinkResolver = doc => {
   return '/'
 }
 
