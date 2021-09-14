@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const errorHandler = require('errorhandler')
 const app = express()
 const path = require('path')
 const port = 3000
@@ -18,6 +19,8 @@ const initApi = req => {
 const handleLinkResolver = doc => {
   return '/'
 }
+
+app.use(errorHandler())
 
 app.use((req, res, next) => {
   res.locals.ctx = {
@@ -37,21 +40,21 @@ app.get('/', (req, res) => {
   res.render('pages/home')
 })
 
-app.get('/about', (req, res) => {
-  initApi(req).then(api => {
-    api.query(Prismic.Predicates.at('document.type', 'about')).then(response => {
-      const { results } = response
-      const [about] = results
-      console.log('1s', about.data.body)
-      res.render('pages/about', {
-        about
-      })
-    })
+app.get('/about', async (req, res) => {
+  const api = await initApi(req)
+  const about = await api.getSingle('about')
+  res.render('pages/about', {
+    about
   })
 })
 
-app.get('/detail/:uid', (req, res) => {
-  res.render('pages/detail')
+app.get('/detail/:uid', async (req, res) => {
+  const api = await initApi(req)
+  const about = await api.getSingle('about')
+  const product = api.getByUID('product', req.params.uid)
+  res.render('pages/detail', {
+    product
+  })
 })
 
 app.get('/collections', (req, res) => {
