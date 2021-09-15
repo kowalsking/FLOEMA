@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
-const errorHandler = require('errorhandler')
+// const errorHandler = require('errorhandler')
 const app = express()
 const path = require('path')
 const port = 3000
@@ -20,7 +20,7 @@ const handleLinkResolver = doc => {
   return '/'
 }
 
-app.use(errorHandler())
+// app.use(errorHandler())
 
 app.use((req, res, next) => {
   res.locals.ctx = {
@@ -50,14 +50,16 @@ app.get('/about', async (req, res) => {
 
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
-  const about = await api.getSingle('about')
-  const product = api.getByUID('product', req.params.uid)
+  const product = await api.getByUID('product', req.params.uid, {
+    fetchLinks: 'collection.title'
+  })
+  console.log(1111, product)
   res.render('pages/detail', {
     product
   })
 })
 
-app.get('/collections', (req, res) => {
+app.get('/collection', (req, res) => {
   res.render('pages/collections')
 })
 
