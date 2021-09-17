@@ -59,7 +59,7 @@ app.get('/detail/:uid', async (req, res) => {
   })
 })
 
-app.get('/collection', (req, res) => {
+app.get('/collection', (_, res) => {
   res.render('pages/collections')
 })
 
