@@ -48,19 +48,31 @@ app.get('/about', async (req, res) => {
   })
 })
 
+app.get('/collections', async (req, res) => {
+  const api = await initApi(req)
+  const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
+    fetchLinks: 'product.image'
+  })
+
+  console.log(collections)
+
+  collections.forEach(collection => {
+    console.log(collection.data.products[0].products_product)
+  })
+
+  res.render('pages/collections', {
+    collections
+  })
+})
+
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collectu.title'
   })
-  console.log(1111, product)
   res.render('pages/detail', {
     product
   })
-})
-
-app.get('/collection', (_, res) => {
-  res.render('pages/collections')
 })
 
 app.listen(port, () => {
