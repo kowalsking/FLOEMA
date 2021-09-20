@@ -18,6 +18,7 @@ app.use(methodOverride())
 
 const Prismic = require('@prismicio/client')
 const PrismicDOM = require('prismic-dom')
+const defaults = require('concurrently/src/defaults')
 
 const initApi = req => {
   return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
@@ -30,19 +31,17 @@ const handleLinkResolver = doc => {
   if (doc.type === 'product') {
     return `/detail/${doc.slug}`
   }
+  if (doc.type === 'collections') {
+    return `/collections`
+  }
   if (doc.type === 'about') {
-    return `/about/${doc.slug}`
+    return `/about`
   }
 
   return '/'
 }
 
 app.use((req, res, next) => {
-  // res.locals.ctx = {
-  //   endpoint: process.env.PRISMIC_ENDPOINT,
-  //   linkResolver: handleLinkResolver
-  // }
-
   res.locals.Link = handleLinkResolver
 
   res.locals.Numbers = index => {
@@ -57,62 +56,70 @@ app.use((req, res, next) => {
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+const handleRequest = async api => {
+  const preloader = await api.getSingle('preloader')
+  const navigation = await api.getSingle('navigation')
+
+  return {
+    navigation,
+    preloader
+  }
+}
+
 app.get('/', async (req, res) => {
   const api = await initApi(req)
+  const defaults = await handleRequest(api)
   const home = await api.getSingle('home')
-  const preloader = await api.getSingle('preloader')
 
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
     fetchLinks: 'product.image'
   })
 
-
+  console.log(defaults)
   res.render('pages/home', {
+    ...defaults,
     home,
     collections,
-    preloader
   })
 })
 
 app.get('/about', async (req, res) => {
   const api = await initApi(req)
+  const defaults = await handleRequest(api)
   const about = await api.getSingle('about')
-  const preloader = await api.getSingle('preloader')
 
   res.render('pages/about', {
-    about,
-    preloader
+    ...defaults,
+    about
   })
 })
 
 app.get('/collections', async (req, res) => {
   const api = await initApi(req)
+  const defaults = await handleRequest(api)
   const home = await api.getSingle('home')
-  const preloader = await api.getSingle('preloader')
 
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
     fetchLinks: 'product.image'
   })
 
-  console.log('pre', preloader)
-
   res.render('pages/collections', {
+    ...defaults,
     home,
-    collections,
-    preloader
+    collections
   })
 })
 
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
-  const preloader = await api.getSingle('preloader')
+  const defaults = await handleRequest(api)
 
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collectu.title'
   })
   res.render('pages/detail', {
-    product,
-    preloader
+    ...defaults,
+    product
   })
 })
 
