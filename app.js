@@ -112,6 +112,7 @@ app.get('/detail/:uid', async (req, res) => {
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collectu.title'
   })
+
   res.render('pages/detail', {
     ...defaults,
     product
