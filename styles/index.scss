@@ -2,8 +2,11 @@
 @import './utils/functions.scss';
 @import './utils/mixins.scss';
 @import './utils/vendors.scss';
+@import './utils/responsive.scss';
 
-// @import './base/reset.scss';
+@import './base/reset.scss';
+@import './shared/descriptions.scss';
+@import './shared/titles.scss';
 @import './base/fonts.scss';
 @import './base/base.scss';
 
@@ -17,3 +20,4 @@
 @import './pages/collections/collections';
 
 @import './pages/details/details';
+
