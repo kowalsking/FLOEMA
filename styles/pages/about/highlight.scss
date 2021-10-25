@@ -12,23 +12,53 @@
 }
 
 .about__highlight__wrapper {
-
+  height: 104rem;
+  width: 144rem;
+  position: relative;
+  margin: auto;
 }
 
 .about__highlight__label {
   @extend %description-12;
 
+  position: absolute;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 9.6rem;
+  letter-spacing: 0.1rem;
+  left: 50%;
+  top: 9rem;
   text-transform: uppercase;
 }
 
 .about__highlight__title {
-  transform: rotate(90deg);
+  @extend title-200;
+
+  padding-bottom: 2rem;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .about__highlight__media {
+  height: 76rem;
+  width: 54rem;
+  position: absolute;
 
+  &:first-child {
+    left: 0;
+    top: 0;
+  }
+
+  &:last-child {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .about__highlight__media__image {
+  @extend %cover;
 
+  object-fit: cover;
 }
