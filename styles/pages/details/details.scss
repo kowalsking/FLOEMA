@@ -93,5 +93,6 @@
 .detail__information__link {
   @extend %title-30;
 
+  display: inline-block;
   margin-top: 3rem;
 }
