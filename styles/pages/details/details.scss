@@ -1,6 +1,7 @@
 .detail {
   @extend %cover;
   @extend %center;
+  background: $color-quicksand;
 }
 
 .detail__wrapper {
