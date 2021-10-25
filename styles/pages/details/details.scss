@@ -42,17 +42,22 @@
 }
 
 .detail__information__highlights {
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 
 .detail__information__highlight {
   align-items: center;
   display: flex;
+
+  &:not(:first-child) {
+    margin-top: 4rem;
+  }
 }
 
 .detail__information__highlight__icon {
   height: 4rem;
   width: 4rem;
+  margin-right: 3.75rem;
 }
 
 .detail__information__highlight__text {
@@ -74,11 +79,15 @@
 }
 
 .detail__information__item__title {
- @extend %description-12;
+  @extend %description-12;
+
+  width: 10rem;
 }
 
 .detail__information__item__description {
   @extend %description-16;
+
+  max-width: 44rem;
 }
 
 .detail__information__link {
