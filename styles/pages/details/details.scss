@@ -2,6 +2,7 @@
   @extend %cover;
   @extend %center;
   background: $color-quicksand;
+  color: $color-white;
 }
 
 .detail__wrapper {
@@ -22,7 +23,7 @@
 }
 
 .detail__information {
-
+  padding-left: 8.2rem;
 }
 
 .detail__information__collection {
