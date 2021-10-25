@@ -42,8 +42,6 @@
 }
 
 .detail__information__highlights {
-  @extend %description-16;
-
   margin-top: 5rem;
 }
 
@@ -57,6 +55,7 @@
 }
 
 .detail__information__highlight__text {
+  @extend %description-16;
 
 }
 
@@ -78,7 +77,7 @@
 }
 
 .detail__information__item__description {
-
+  @extend %description-16;
 }
 
 .detail__information__link {
