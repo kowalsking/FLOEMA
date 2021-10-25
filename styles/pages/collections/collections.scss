@@ -17,12 +17,15 @@
 }
 
 .collections__titles__label {
+  @extend %description-12;
+
+  text-transform: uppercase;
   text-align: center;
   transform: rotate(90deg);
 }
 
 .collections__titles__title {
-
+  @extend %title-200;
 }
 
 .collections__gallery {
