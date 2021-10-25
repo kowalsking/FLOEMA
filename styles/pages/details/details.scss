@@ -42,6 +42,8 @@
 }
 
 .detail__information__highlights {
+  @extend %description-16;
+
   margin-top: 5rem;
 }
 
