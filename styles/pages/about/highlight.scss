@@ -11,12 +11,24 @@
   }
 }
 
-.about__highlight__wrapper {}
+.about__highlight__wrapper {
 
-.about__highlight__label {}
+}
 
-.about__highlight__title {}
+.about__highlight__label {
+  @extend %description-12;
 
-.about__highlight__media {}
+  text-transform: uppercase;
+}
 
-.about__highlight__media__image {}
+.about__highlight__title {
+  transform: rotate(90deg);
+}
+
+.about__highlight__media {
+
+}
+
+.about__highlight__media__image {
+
+}
