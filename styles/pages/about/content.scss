@@ -1,7 +1,8 @@
 .about__content {
+  display: flex;
+  justify-content: center ;
   margin: 20rem auto;
   position: relative;
-  width: 125.8rem;
 
   &:first-child {
     margin-top: 0;
@@ -14,6 +15,15 @@
 
 .about__content__wrapper {
   display: flex;
+
+  .about__content--right & {
+    flex-direction: row-reverse;
+  }
+}
+
+.about__content__box {
+  display: flex;
+  text-transform: uppercase;
 }
 
 .about__content__label {
@@ -25,7 +35,7 @@
 }
 
 .about__content__media {
-  position: absolute;
+
 }
 
 .about__content__media__image {}
