@@ -22,6 +22,8 @@
 }
 
 .about__content__box {
+  @extend %description-12;
+
   display: flex;
   text-transform: uppercase;
 }
@@ -32,10 +34,26 @@
 
 .about__content__description {
   width: 36.2rem;
+
+  p:not(:first-child) {
+    margin-top: 2.5rem;
+  }
 }
 
 .about__content__media {
+  .about__content:nth-child(3) & {
+    width: 53.8rem;
+    height: 80.8rem;
+    margin-left: 17.8rem;
+    position: relative;
+  }
+  .about__content:nth-child(1) & {
 
+  }
 }
 
-.about__content__media__image {}
+.about__content__media__image {
+  @extend %cover;
+
+  object-fit: cover;
+}
