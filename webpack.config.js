@@ -101,14 +101,14 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.(jpe?g|png|gif|svg|webp)$/i,
-        use: [
-          {
-            loader: ImageMinimizerPlugin.loader
-          },
-        ],
-      },
+      // {
+      //   test: /\.(jpe?g|png|gif|svg|webp)$/i,
+      //   use: [
+      //     {
+      //       loader: ImageMinimizerPlugin.loader
+      //     },
+      //   ],
+      // },
       {
         test: /\.(glsl|frag|vert)$/,
         loader: 'raw-loader',

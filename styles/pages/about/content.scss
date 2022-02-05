@@ -1,6 +1,6 @@
 .about__content {
   display: flex;
-  justify-content: center ;
+  justify-content: center;
   margin: 20rem auto;
   position: relative;
 
@@ -30,14 +30,14 @@
 }
 
 .about__content__box {
-  @extend %description-12;
-
   display: flex;
-  text-transform: uppercase;
 }
 
 .about__content__label {
+  @extend %description-12;
+
   width: 18rem;
+  text-transform: uppercase;
 }
 
 .about__content__description {
