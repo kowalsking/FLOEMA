@@ -99,3 +99,16 @@
   display: inline-block;
   margin-top: 3rem;
 }
+
+.detail__button {
+  bottom: 5rem;
+  height: 6rem;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 12.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
