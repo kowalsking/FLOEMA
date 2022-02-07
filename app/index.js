@@ -1,3 +1,7 @@
-import pc from 'images/placeholder.jpg'
+class App {
+  constructor () {
+    console.log('app')
+  }
+}
 
-console.log(pc);
+new App()
