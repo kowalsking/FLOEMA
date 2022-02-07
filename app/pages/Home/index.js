@@ -5,6 +5,5 @@ export default class Home extends Page {
     super({
       id: 'home'
     })
-    console.log('Home')
   }
 }

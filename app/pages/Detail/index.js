@@ -5,6 +5,5 @@ export default class Detail extends Page {
     super({
       id: 'detail'
     })
-    console.log('Detail')
   }
 }

@@ -5,8 +5,5 @@ export default class About extends Page {
     super({
       id: 'about'
     })
-    console.log('About')
-
-    this.create()
   }
 }
