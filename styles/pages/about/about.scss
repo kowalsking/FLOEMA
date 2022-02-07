@@ -15,5 +15,6 @@
 
   @include media('<phone') {
     max-width: 67.7rem;
+    margin: auto;
   }
 }
