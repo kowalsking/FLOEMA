@@ -4,6 +4,7 @@
 
   color: $color-quarter-spanish-white;
   background: $color-contessa;
+  overflow: hidden;
   text-align: center;
 
   &:before,
@@ -43,6 +44,8 @@
 
 .home__gallery {
   @extend %cover;
+
+  visibility: hidden;
 }
 
 .home__gallery__media {
@@ -66,4 +69,11 @@
   width: 28.8rem;
   position: absolute;
   z-index: 2;
+
+  @include media('<phone') {
+    bottom: 7.5rem;
+    width: 55rem;
+    height: 13.7rem;
+
+  }
 }

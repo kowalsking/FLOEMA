@@ -17,10 +17,6 @@ body {
   @extend %description-16;
 
   font-family: $font-suisse-bp, sans-serif;
-
-  @include media('<phone') {
-    font-size: 2.8rem;
-  }
 }
 
 a {
