@@ -10,6 +10,11 @@ export default class Page {
   }
 
   create () {
+    this.element = document.quearySelector(this.selector)
+    this.elements = {}
+
+
+
     console.log('create', this.id)
   }
 }
