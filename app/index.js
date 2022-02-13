@@ -1,3 +1,4 @@
+import each from 'lodash/each'
 import About from 'pages/About'
 import Collections from 'pages/Collections'
 import Detail from 'pages/Detail'
@@ -7,6 +8,7 @@ class App {
   constructor () {
     this.createContent()
     this.createPages()
+    this.addLinkListeners()
   }
 
   createContent () {
@@ -24,8 +26,24 @@ class App {
 
     this.page = this.pages[this.template]
     this.page.create()
+    this.page.show()
+  }
 
-    console.log(this.page)
+  onChange (url) {
+    console.log(url)
+  }
+
+  addLinkListeners () {
+    const links = document.querySelectorAll('a')
+
+    each(links, link => {
+      link.onclick = event => {
+        event.preventDefault()
+        const { href } = link
+
+        this.onChange(href)
+      }
+    })
   }
 }
 
