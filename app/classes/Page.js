@@ -5,7 +5,9 @@ export default class Page {
     id
   }) {
     this.selector = element
-    this.selectorChildren = elements
+    this.selectorChildren = {
+      ...elements
+    }
     this.id = id
   }
 
@@ -13,7 +15,9 @@ export default class Page {
     this.element = document.quearySelector(this.selector)
     this.elements = {}
 
-
+    this.selectorChildren.forEach(entry => {
+      console.log(entry)
+    })
 
     console.log('create', this.id)
   }
