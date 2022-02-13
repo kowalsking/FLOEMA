@@ -29,8 +29,28 @@ class App {
     this.page.show()
   }
 
-  onChange (url) {
-    console.log(url)
+  async onChange (url) {
+    console.log(this.page, ';;s')
+    await this.page.hide()
+    const request = await window.fetch(url)
+
+    if (request.status === 200) {
+      const html = await request.text()
+      const div = document.createElement('div')
+
+      div.innerHTML = html
+
+      const divContent = div.querySelector('.content')
+
+      this.template = divContent.getAttribute('data-template')
+      this.content.setAttribute('data-template', this.template)
+      this.content.innerHTML = divContent.innerHTML
+      this.page = this.pages[this.template]
+      this.page.create()
+      this.page.show()
+    } else {
+      console.error('Error')
+    }
   }
 
   addLinkListeners () {
