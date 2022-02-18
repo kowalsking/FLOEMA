@@ -30,7 +30,6 @@ class App {
   }
 
   async onChange (url) {
-    console.log(this.page, ';;s')
     await this.page.hide()
     const request = await window.fetch(url)
 
@@ -48,6 +47,8 @@ class App {
       this.page = this.pages[this.template]
       this.page.create()
       this.page.show()
+
+      this.addLinkListeners()
     } else {
       console.error('Error')
     }
