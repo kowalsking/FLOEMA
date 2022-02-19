@@ -50,7 +50,7 @@ class App {
 
       this.addLinkListeners()
     } else {
-      console.error('Error')
+      console.error('Error!')
     }
   }
 
