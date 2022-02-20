@@ -14,10 +14,17 @@ export default class Preloader extends Component {
       }
     })
 
-    this.elements.titleSpans = split({
+    split({
       element: this.elements.title,
       expression: '<br>'
     })
+
+    split({
+      element: this.elements.title,
+      expression: '<br>'
+    })
+
+    this.elements.titleSpans = this.elements.title.querySelectorAll('span span')
 
     this.length = 0
 
@@ -47,9 +54,16 @@ export default class Preloader extends Component {
         delay: 2
       })
 
-      this.animateOut.to(this.element, {
-        autoAlpha: 0
+      this.animateOut.to(this.elements.titleSpans, {
+        y: '100%',
+        duration: 1.5,
+        ease: 'expo.out',
+        stagger: 0.1
       })
+
+      // this.animateOut.to(this.element, {
+      //   autoAlpha: 0
+      // })
 
       this.animateOut.call(_ => {
         // this.emit('completed')
