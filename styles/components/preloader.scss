@@ -2,11 +2,10 @@
   @extend %cover;
   @extend %center;
 
-  display: none;
   color: $color-quarter-spanish-white;
   background: $color-contessa;
   text-align: center;
-  z-index: z('preloader');
+  z-index: z("preloader");
 }
 
 .preloader__text {
@@ -23,7 +22,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  @include media('<phone') {
+  @include media("<phone") {
     font-size: 2.4rem;
   }
 }
