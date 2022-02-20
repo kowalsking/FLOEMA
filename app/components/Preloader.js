@@ -61,6 +61,12 @@ export default class Preloader extends Component {
         stagger: 0.1
       })
 
+      this.animateOut.to(this.elements.titleSpans, {
+        y: '100%',
+        duration: 1.5,
+        ease: 'expo.out',
+        stagger: 0.1
+      }, '-=1.4')
       // this.animateOut.to(this.element, {
       //   autoAlpha: 0
       // })
