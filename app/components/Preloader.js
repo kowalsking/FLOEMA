@@ -10,6 +10,7 @@ export default class Preloader extends Component {
       elements: {
         title: '.preloader__text',
         number: '.preloader__number',
+        numberText: '.preloader__number__text',
         images: document.querySelectorAll('img')
       }
     })
@@ -42,7 +43,7 @@ export default class Preloader extends Component {
     this.length += 1
     const percent = this.length / this.elements.images.length
     console.log()
-    this.elements.number.innerHTML = `${Math.round(percent * 100)}%`
+    this.elements.numberText.innerHTML = `${Math.round(percent * 100)}%`
     if (percent === 1) {
       this.onLoaded()
     }
@@ -61,18 +62,22 @@ export default class Preloader extends Component {
         stagger: 0.1
       })
 
-      this.animateOut.to(this.elements.titleSpans, {
+      this.animateOut.to(this.elements.numberText, {
         y: '100%',
         duration: 1.5,
         ease: 'expo.out',
         stagger: 0.1
       }, '-=1.4')
-      // this.animateOut.to(this.element, {
-      //   autoAlpha: 0
-      // })
+
+      this.animateOut.to(this.element, {
+        scaleY: 0,
+        transformOrigin: '100% 100%',
+        duration: 1.5,
+        ease: 'expo.out',
+      }, '-=1')
 
       this.animateOut.call(_ => {
-        // this.emit('completed')
+        this.emit('completed')
       })
     })
   }

@@ -1,10 +1,10 @@
 .about {
   background: $color-cadet-blue;
   color: $color-bright-grey;
+  opacity: 0;
 }
 
 .about__wrapper {
-
 }
 
 .about__title {
@@ -13,7 +13,7 @@
   max-width: 124rem;
   text-align: center;
 
-  @include media('<phone') {
+  @include media("<phone") {
     max-width: 67.7rem;
     margin: auto;
   }

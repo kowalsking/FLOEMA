@@ -33,11 +33,12 @@ class App {
 
     this.page = this.pages[this.template]
     this.page.create()
-    this.page.show()
   }
 
   onPreloaded () {
     this.preloader.destroy()
+
+    this.page.show()
   }
 
   async onChange (url) {
