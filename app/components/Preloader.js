@@ -4,7 +4,7 @@ import GSAP from 'gsap'
 import { split } from 'utils/text'
 
 export default class Preloader extends Component {
-  constructor () {
+  constructor() {
     super({
       element: '.preloader',
       elements: {
@@ -32,14 +32,14 @@ export default class Preloader extends Component {
     this.createLoader()
   }
 
-  createLoader () {
+  createLoader() {
     each(this.elements.images, element => {
       element.src = element.getAttribute('data-src')
       element.onload = _ => this.onAssetLoaded(element)
     })
   }
 
-  onAssetLoaded (image) {
+  onAssetLoaded(image) {
     this.length += 1
     const percent = this.length / this.elements.images.length
     console.log()
@@ -49,7 +49,7 @@ export default class Preloader extends Component {
     }
   }
 
-  onLoaded () {
+  onLoaded() {
     return new Promise(resolve => {
       this.animateOut = GSAP.timeline({
         delay: 2
@@ -82,7 +82,7 @@ export default class Preloader extends Component {
     })
   }
 
-  destroy () {
+  destroy() {
     this.element.parentNode.removeChild(this.element)
   }
 }
