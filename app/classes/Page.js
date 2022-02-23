@@ -2,7 +2,7 @@ import each from 'lodash/each'
 import GSAP from 'gsap'
 
 export default class Page {
-  constructor ({
+  constructor({
     element,
     elements,
     id
@@ -14,7 +14,7 @@ export default class Page {
     this.id = id
   }
 
-  create () {
+  create() {
     this.element = document.querySelector(this.selector)
     this.elements = {}
 
@@ -33,23 +33,45 @@ export default class Page {
     })
   }
 
-  show () {
+  show() {
     return new Promise(resolve => {
-      GSAP.fromTo(this.element, {
+      this.animationIn = GSAP.timeline()
+      this.animationIn.fromTo(this.element, {
         autoAlpha: 0
       }, {
         autoAlpha: 1,
+      })
+
+      this.animationIn.call(_ => {
+        this.addEventsListeners()
+
+        resolve()
+      })
+    })
+  }
+
+  hide() {
+    return new Promise(resolve => {
+      this.removeEventListeners()
+
+      this.animationOut = GSAP.timeline()
+
+      this.animationOut.to(this.element, {
+        autoAlpha: 0,
         onComplete: resolve
       })
     })
   }
 
-  hide () {
-    return new Promise(resolve => {
-      GSAP.to(this.element, {
-        autoAlpha: 0,
-        onComplete: resolve
-      })
-    })
+  onMouseWheel(event) {
+    console.log(event)
+  }
+
+  addEventsListeners() {
+    window.addEventListener('mousewheel', this.onMouseWheel)
+  }
+
+  removeEventListeners() {
+
   }
 }

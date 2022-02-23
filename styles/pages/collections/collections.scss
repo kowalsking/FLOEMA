@@ -1,5 +1,5 @@
 .collections {
-  @extend %cover;
+  @extend %page;
 
   background: $color-quicksand;
   color: $color-quarter-spanish-white;
@@ -14,7 +14,7 @@
 .collections__titles {
   @extend %vertical-titles;
 
-  @include media('<phone') {
+  @include media("<phone") {
     display: none;
   }
 }
@@ -59,7 +59,7 @@
 .collections__content {
   @extend %cover;
 
-  @include media('<phone') {
+  @include media("<phone") {
     display: none;
   }
 }

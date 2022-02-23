@@ -1,10 +1,11 @@
 .detail {
-  @extend %cover;
+  @extend %page;
   @extend %center;
+
   background: $color-quicksand;
   color: $color-quarter-spanish-white;
 
-  @include media('<phone') {
+  @include media("<phone") {
     height: auto;
   }
 }
@@ -13,7 +14,7 @@
   align-items: center;
   display: flex;
 
-  @include media('<phone') {
+  @include media("<phone") {
     display: block;
     margin: auto;
     width: 66.1rem;
@@ -26,7 +27,7 @@
   width: 55.4rem;
   position: relative;
 
-  @include media('<phone') {
+  @include media("<phone") {
     width: 66.1rem;
     margin: 0 auto 7.8rem;
     height: 93.4rem;
@@ -42,7 +43,7 @@
 .detail__information {
   padding-left: 8.2rem;
 
-  @include media('<phone') {
+  @include media("<phone") {
     padding-left: 0;
   }
 }
@@ -63,7 +64,7 @@
 .detail__information__content {
   padding-left: 18rem;
 
-  @include media('<phone') {
+  @include media("<phone") {
     padding-left: 0;
   }
 }
@@ -87,7 +88,7 @@
   margin-right: 3.75rem;
   border-radius: 50%;
 
-  @include media('<phone') {
+  @include media("<phone") {
     height: 9.2rem;
     width: 9.2rem;
     margin-right: 5.8rem;
@@ -96,7 +97,6 @@
 
 .detail__information__highlight__text {
   @extend %description-16;
-
 }
 
 .detail__information__list {
@@ -117,7 +117,7 @@
   padding-right: 2.5rem;
   width: 10rem;
 
-  @include media('<phone') {
+  @include media("<phone") {
     padding-right: 5rem;
     width: 15rem;
   }
@@ -151,7 +151,7 @@
   justify-content: center;
   z-index: 3;
 
-  @include media('<phone') {
+  @include media("<phone") {
     width: 26.8rem;
     height: 13rem;
     bottom: 12rem;
