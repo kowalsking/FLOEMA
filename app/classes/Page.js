@@ -11,6 +11,7 @@ export default class Page {
     this.selectorChildren = {
       ...elements
     }
+
     this.id = id
   }
 
