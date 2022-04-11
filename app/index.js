@@ -6,24 +6,27 @@ import Home from 'pages/Home'
 import Preloader from 'components/Preloader'
 
 class App {
-  constructor () {
+  constructor() {
     this.createPreloader()
     this.createContent()
     this.createPages()
     this.addLinkListeners()
+    this.addEventListeners()
+
+    this.update()
   }
 
-  createPreloader () {
+  createPreloader() {
     this.preloader = new Preloader()
     this.preloader.once('completed', this.onPreloaded.bind(this))
   }
 
-  createContent () {
+  createContent() {
     this.content = document.querySelector('.content')
     this.template = this.content.getAttribute('data-template') // this.content.dataset.template
   }
 
-  createPages () {
+  createPages() {
     this.pages = {
       home: new Home(),
       collections: new Collections(),
@@ -35,13 +38,16 @@ class App {
     this.page.create()
   }
 
-  onPreloaded () {
+  /**
+   * Events.
+   */
+  onPreloaded() {
     this.preloader.destroy()
-
+    this.onResize()
     this.page.show()
   }
 
-  async onChange (url) {
+  async onChange(url) {
     await this.page.hide()
     const request = await window.fetch(url)
 
@@ -59,6 +65,9 @@ class App {
 
       this.page = this.pages[this.template]
       this.page.create()
+
+      this.onResize()
+
       this.page.show()
 
       this.addLinkListeners()
@@ -67,7 +76,30 @@ class App {
     }
   }
 
-  addLinkListeners () {
+  onResize() {
+    if (this.page?.onResize) {
+      this.page.onResize()
+    }
+  }
+
+  /**
+   * Loop.
+   */
+  update() {
+    if (this.page && this.page.update) {
+      this.page.update()
+    }
+    this.frame = window.requestAnimationFrame(this.update.bind(this))
+  }
+
+  /**
+   * Listeners.
+   */
+  addEventListeners() {
+    window.addEventListener('resize', this.onResize.bind(this))
+  }
+
+  addLinkListeners() {
     const links = document.querySelectorAll('a')
 
     each(links, link => {
