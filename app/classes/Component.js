@@ -2,7 +2,7 @@ import EventEmitter from 'events'
 import each from 'lodash/each'
 
 export default class Component extends EventEmitter {
-  constructor ({
+  constructor({
     element,
     elements
   }) {
@@ -18,8 +18,12 @@ export default class Component extends EventEmitter {
     this.addEventListeners()
   }
 
-  create () {
-    this.element = document.querySelector(this.selector)
+  create() {
+    if (this.selector instanceof window.HTMLElement) {
+      this.element = this.selector
+    } else {
+      this.element = document.querySelector(this.selector)
+    }
     this.elements = {}
 
     each(this.selectorChildren, (entry, key) => {
@@ -37,11 +41,11 @@ export default class Component extends EventEmitter {
     })
   }
 
-  addEventListeners () {
+  addEventListeners() {
 
   }
 
-  removeEventListeners () {
+  removeEventListeners() {
 
   }
 }
