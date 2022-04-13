@@ -44,3 +44,10 @@ img {
 .content {
   @extend %cover;
 }
+
+[data-animation="title"] {
+  span {
+    display: inline-block;
+    overflow: hidden;
+  }
+}
