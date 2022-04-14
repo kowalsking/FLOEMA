@@ -20,7 +20,7 @@ export default class Title extends Animation {
     })
 
     GSAP.fromTo(this.elementsLines, {
-      y: '100%' // fix the font
+      y: '100%'
     }, {
       delay: 0.5,
       duration: 1.5,
