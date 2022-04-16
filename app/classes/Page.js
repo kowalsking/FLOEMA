@@ -3,7 +3,11 @@ import map from 'lodash/map'
 import GSAP from 'gsap'
 import NormalizeWheel from 'normalize-wheel'
 import Prefix from 'prefix'
+
+import Highlight from 'animations/Highlight'
 import Title from 'animations/Title'
+import Label from 'animations/Label'
+import Paragraph from 'animations/Paragraph'
 
 export default class Page {
   constructor({
@@ -14,7 +18,10 @@ export default class Page {
     this.selector = element
     this.selectorChildren = {
       ...elements,
-      animationsTitles: '[data-animation="title"]'
+      animationsTitles: '[data-animation="title"]',
+      animationsParagraphs: '[data-animation="paragraph"',
+      animationsLabels: '[data-animation="label"',
+      animationsHighlights: '[data-animation="highlight"]'
     }
 
     this.id = id
@@ -49,9 +56,33 @@ export default class Page {
   }
 
   createAnimations() {
+    this.animations = []
+
+    // Highlights.
+    this.animationsHighlights = map(this.elements.animationsHighlights, element => {
+      return new Highlight({ element })
+    })
+
+    // Titles.
     this.animationsTitles = map(this.elements.animationsTitles, element => {
       return new Title({ element })
     })
+
+    this.animations.push(...this.animationsTitles)
+
+    // Paragraphs.
+    this.animationsParagraphs = map(this.elements.animationsParagraphs, element => {
+      return new Paragraph({ element })
+    })
+
+    this.animations.push(...this.animationsParagraphs)
+
+    // Labels.
+    this.animationsLabels = map(this.elements.animationsLabels, element => {
+      return new Label({ element })
+    })
+
+    this.animations.push(...this.animationsLabels)
   }
 
   show() {
@@ -95,7 +126,7 @@ export default class Page {
       this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
     }
 
-    each(this.animationsTitles, animation => { animation.onResize() })
+    each(this.animations, animation => { animation.onResize() })
   }
 
   update() {
