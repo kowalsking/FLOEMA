@@ -9,6 +9,8 @@ import Title from 'animations/Title'
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
 
+import { ColorsManager } from 'classes/Colors'
+
 export default class Page {
   constructor({
     element,
@@ -16,6 +18,7 @@ export default class Page {
     id
   }) {
     this.selector = element
+
     this.selectorChildren = {
       ...elements,
       animationsTitles: '[data-animation="title"]',
@@ -87,6 +90,10 @@ export default class Page {
 
   show() {
     return new Promise(resolve => {
+      ColorsManager.change({
+        backgroundColor: this.element.getAttribute('data-background'),
+        color: this.element.getAttribute('data-color'),
+      })
       this.animationIn = GSAP.timeline()
       this.animationIn.fromTo(this.element, {
         autoAlpha: 0
