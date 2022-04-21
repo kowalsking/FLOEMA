@@ -10,7 +10,13 @@ export default class AsyncLoad extends Component {
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.element.src = this.element.getAttribute('data-src')
+          if (!this.element.src) {
+            this.element.src = this.element.getAttribute('data-src')
+            // this.element.onload = _ => {
+            //   console.log(_, 'onloaded')
+            //   this.element.classList.add('loaded')
+            // }
+          }
         }
       })
     })
