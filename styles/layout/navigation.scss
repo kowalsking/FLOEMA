@@ -9,13 +9,16 @@
 
 .navigation__link {
   @extend %description-12;
+  @extend %link--hidden;
 
   position: absolute;
   pointer-events: auto;
+  font-size: 3rem;
   left: 4rem;
   top: 4rem;
-  width: 12.8rem;
-  height: 2rem;
+  color: $color-quarter-spanish-white;
+  // width: 12.8rem;
+  // height: 2rem;
 
   @include media('<phone') {
     left: 5rem;
@@ -45,4 +48,5 @@
   @extend %title-20;
 
   display: block;
+  line-height: 1;
 }

@@ -3,13 +3,12 @@ import map from 'lodash/map'
 import GSAP from 'gsap'
 import NormalizeWheel from 'normalize-wheel'
 import Prefix from 'prefix'
-
 import Highlight from 'animations/Highlight'
 import Title from 'animations/Title'
 import Label from 'animations/Label'
 import Paragraph from 'animations/Paragraph'
-
 import { ColorsManager } from 'classes/Colors'
+import AsyncLoad from 'classes/AsyncLoad'
 
 export default class Page {
   constructor({
@@ -24,7 +23,9 @@ export default class Page {
       animationsTitles: '[data-animation="title"]',
       animationsParagraphs: '[data-animation="paragraph"',
       animationsLabels: '[data-animation="label"',
-      animationsHighlights: '[data-animation="highlight"]'
+      animationsHighlights: '[data-animation="highlight"]',
+
+      preloaders: '[data-src]'
     }
 
     this.id = id
@@ -56,6 +57,7 @@ export default class Page {
     })
 
     this.createAnimations()
+    this.createPreloader()
   }
 
   createAnimations() {
@@ -86,6 +88,12 @@ export default class Page {
     })
 
     this.animations.push(...this.animationsLabels)
+  }
+
+  createPreloader() {
+    this.preloaders = map(this.elements.preloaders, element => {
+      return new AsyncLoad({ element })
+    })
   }
 
   show() {
