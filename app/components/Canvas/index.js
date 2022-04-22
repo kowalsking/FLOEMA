@@ -1,4 +1,4 @@
-import { Camera, Renderer, Transform, Box, Program, Mesh } from 'ogl'
+import { Camera, Renderer, Transform } from 'ogl'
 import Home from './Home'
 
 export default class Canvas {
@@ -27,7 +27,8 @@ export default class Canvas {
 
   createHome() {
     this.home = new Home({
-      gl: this.gl
+      gl: this.gl,
+      scene: this.scene
     })
   }
 
@@ -39,9 +40,6 @@ export default class Canvas {
   }
 
   update() {
-    this.mesh.rotation.x += 0.01
-    this.mesh.rotation.y += 0.01
-
     this.renderer.render({
       camera: this.camera,
       scene: this.scene
