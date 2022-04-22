@@ -5,11 +5,13 @@ import Detail from 'pages/Detail'
 import Home from 'pages/Home'
 import Preloader from 'components/Preloader'
 import Navigation from 'components/Navigation'
+import Canvas from 'components/Canvas'
 
 class App {
   constructor() {
     this.createContent()
     this.createNavigation()
+    this.createCanvas()
     this.createPreloader()
     this.createPages()
     this.addLinkListeners()
@@ -27,6 +29,10 @@ class App {
   createPreloader() {
     this.preloader = new Preloader()
     this.preloader.once('completed', this.onPreloaded.bind(this))
+  }
+
+  createCanvas() {
+    this.canvas = new Canvas()
   }
 
   createContent() {
@@ -77,7 +83,6 @@ class App {
       this.page.create()
 
       this.onResize()
-
       this.page.show()
 
       this.addLinkListeners()
@@ -87,18 +92,16 @@ class App {
   }
 
   onResize() {
-    if (this.page?.onResize) {
-      this.page.onResize()
-    }
+    this.canvas?.onResize()
+    this.page?.onResize()
   }
 
   /**
    * Loop.
    */
   update() {
-    if (this.page && this.page.update) {
-      this.page.update()
-    }
+    this.canvas?.update()
+    this.page?.update()
     this.frame = window.requestAnimationFrame(this.update.bind(this))
   }
 

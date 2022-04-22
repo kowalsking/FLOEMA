@@ -6,10 +6,9 @@ export default class Button extends Component {
     super({ element })
 
     this.path = element.querySelector('path:last-child') // should be SVG path
-    this.pathLength = this.path.totalLength()
+    // this.pathLength = this.path.totalLength()
 
-    console.log(this.path)
-    this.timeline = GSAP.timeline({ paused: true })
+    // this.timeline = GSAP.timeline({ paused: true })
     // this.timeline.fromTo(this.path, {
     //   strokeDashoffset: this.pathLength,
     //   strokeDasharray: `${this.pathLength} ${this.pathLength}`
