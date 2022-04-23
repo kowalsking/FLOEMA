@@ -23,8 +23,6 @@ export default class {
     this.image.crossOrigin = 'anonymous'
     this.image.src = this.element.getAttribute('data-src')
     this.image.onload = () => this.texture.image = this.image
-
-    console.log(this.element)
   }
 
   createProgram() {
