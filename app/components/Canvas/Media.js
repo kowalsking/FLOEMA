@@ -1,5 +1,4 @@
 import { Mesh, Program, Texture } from 'ogl'
-
 import vertex from 'shaders/plane-vertex.glsl'
 import fragment from 'shaders/plane-fragment.glsl'
 
