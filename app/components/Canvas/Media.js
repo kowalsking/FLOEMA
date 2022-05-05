@@ -42,7 +42,6 @@ export default class {
     })
 
     this.mesh.setParent(this.scene)
-    this.mesh.position.x += this.index * this.mesh.scale.x
   }
 
   createBounds({ sizes }) {
@@ -59,6 +58,12 @@ export default class {
 
     this.mesh.scale.x = width * this.width
     this.mesh.scale.y = height * this.height
+
+    this.x = this.bounds.left / window.innerWidth
+    this.y = this.bounds.top / window.innerHeight
+
+    this.mesh.position.x = (-width / 2) + (this.mesh.scale.x / 2) + (this.x * width)
+    this.mesh.position.y = (height / 2) - (this.mesh.scale.y / 2) - (this.y * height)
   }
 
   updateX() { }
