@@ -3,10 +3,11 @@ import map from 'lodash/map'
 import { Plane, Transform } from 'ogl'
 
 export default class {
-  constructor({ gl, scene }) {
+  constructor({ gl, scene, sizes }) {
     this.group = new Transform()
     this.gl = gl
-    this.medias = document.querySelectorAll('.home__gallery__media__image')
+    this.mediasElements = document.querySelectorAll('.home__gallery__media__image')
+    this.sizes = sizes
 
     this.createGeometry()
     this.createGallery()
@@ -19,14 +20,19 @@ export default class {
   }
 
   createGallery() {
-    map(this.medias, (element, index) => {
+    this.medias = map(this.mediasElements, (element, index) => {
       return new Media({
         element,
         index,
         gl: this.gl,
         geometry: this.geometry,
-        scene: this.group
+        scene: this.group,
+        sizes: this.sizes
       })
     })
+  }
+
+  onResize(event) {
+    map(this.medias, media => media.onResize(event))
   }
 }

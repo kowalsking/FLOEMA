@@ -168,10 +168,34 @@
     top: 128.6rem;
     width: 27.8rem;
   }
+
+  // delete
+  &:nth-child(16) {
+    height: 41.8rem;
+    left: 105.7rem;
+    top: 128.6rem;
+    width: 27.8rem;
+  }
+
+  &:nth-child(17) {
+    height: 41.8rem;
+    left: 164.7rem;
+    top: 110.9rem;
+    width: 27.8rem;
+  }
+
+  &:nth-child(18) {
+    height: 41.8rem;
+    left: 206.3rem;
+    top: 128.6rem;
+    width: 27.8rem;
+  }
 }
 
 .home__gallery__media__image {
   opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .home__link {

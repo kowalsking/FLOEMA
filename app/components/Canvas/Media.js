@@ -3,12 +3,13 @@ import vertex from 'shaders/plane-vertex.glsl'
 import fragment from 'shaders/plane-fragment.glsl'
 
 export default class {
-  constructor({ element, geometry, gl, index, scene }) {
+  constructor({ element, geometry, gl, index, scene, sizes }) {
     this.geometry = geometry
     this.gl = gl
     this.element = element
     this.scene = scene
     this.index = index
+    this.sizes = sizes
 
     this.createTexture()
     this.createProgram()
@@ -42,5 +43,29 @@ export default class {
 
     this.mesh.setParent(this.scene)
     this.mesh.position.x += this.index * this.mesh.scale.x
+  }
+
+  createBounds({ sizes }) {
+    this.bounds = this.element.getBoundingClientRect()
+
+    this.updateScale(sizes)
+    this.updateX()
+    this.updateY()
+  }
+
+  updateScale({ height, width }) {
+    this.height = this.bounds.height / window.innerHeight
+    this.width = this.bounds.width / window.innerWidth
+
+    this.mesh.scale.x = width * this.width
+    this.mesh.scale.y = height * this.height
+  }
+
+  updateX() { }
+
+  updateY() { }
+
+  onResize(sizes) {
+    this.createBounds(sizes)
   }
 }
