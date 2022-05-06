@@ -53,6 +53,16 @@ export default class {
     this.updateY()
   }
 
+  /**
+   * Events.
+   */
+  onResize(sizes) {
+    this.createBounds(sizes)
+  }
+
+  /**
+   * Loop.
+   */
   updateScale({ height, width }) {
     this.height = this.bounds.height / window.innerHeight
     this.width = this.bounds.width / window.innerWidth
@@ -75,9 +85,5 @@ export default class {
   update(scroll) {
     this.updateX(scroll.x)
     this.updateY(scroll.y)
-  }
-
-  onResize(sizes) {
-    this.createBounds(sizes)
   }
 }
