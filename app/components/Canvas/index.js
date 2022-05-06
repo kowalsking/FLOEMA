@@ -92,8 +92,8 @@ export default class Canvas {
     this.x.end = x
     this.y.end = y
 
-    this.x.distance = this.x.start - this.x.end
-    this.y.distance = this.y.start - this.y.end
+    // this.x.distance = this.x.start - this.x.end
+    // this.y.distance = this.y.start - this.y.end
 
     if (this.home) {
       this.home.onTouchMove({
@@ -111,8 +111,8 @@ export default class Canvas {
     this.x.end = x
     this.y.end = y
 
-    this.x.distance = this.x.start - this.x.end
-    this.y.distance = this.y.start - this.y.end
+    // this.x.distance = this.x.start - this.x.end
+    // this.y.distance = this.y.start - this.y.end
 
     if (this.home) {
       this.home.onTouchUp({
@@ -126,6 +126,9 @@ export default class Canvas {
    * Loop.
    */
   update() {
+    if (this.home) {
+      this.home.update()
+    }
     this.renderer.render({
       camera: this.camera,
       scene: this.scene
