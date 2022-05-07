@@ -7,6 +7,8 @@ export default class {
   constructor({ gl, scene, sizes }) {
     this.group = new Transform()
     this.gl = gl
+
+    this.galleryElement = document.querySelector('.home__gallery')
     this.mediasElements = document.querySelectorAll('.home__gallery__media__image')
     this.sizes = sizes
 
@@ -61,6 +63,10 @@ export default class {
 
   onResize(event) {
     map(this.medias, media => media.onResize(event))
+
+    this.galleryBounds = this.galleryElement.getBoundingClientRect()
+
+    this.sizes = event.sizes
   }
 
   onTouchDown({ x, y }) {
@@ -84,14 +90,37 @@ export default class {
    * Update.
    */
   update() {
+    if (!this.galleryBounds) return
+
     this.x.current = GSAP.utils.interpolate(this.x.current, this.x.target, this.x.lerp)
     this.y.current = GSAP.utils.interpolate(this.y.current, this.y.target, this.y.lerp)
 
-    console.log(this.x.current, this.x.target, this.x.lerp)
+    if (this.scroll.x < this.x.current) {
+      this.x.direction = 'right'
+    } else if (this.scroll.x > this.x.current) {
+      this.x.direction = 'left'
+    }
+
+    this.galleryWidth = this.galleryBounds.width / window.innerWidth * this.sizes.width
+
     this.scroll.x = this.x.current
     this.scroll.y = this.y.current
 
     map(this.medias, media => {
+      if (this.x.direction === 'left') {
+        const x = media.mesh.position.x + media.mesh.scale.x / 2
+
+        if (x < - this.sizes.width / 2) {
+          media.extra.x += this.galleryWidth
+        }
+      } else if (this.x.direction === 'right') {
+        const x = media.mesh.position.x - media.mesh.scale.x / 2
+
+        if (x > this.sizes.width / 2) {
+          media.extra.x -= this.galleryWidth
+        }
+      }
+
       media.update(this.scroll)
     })
   }
