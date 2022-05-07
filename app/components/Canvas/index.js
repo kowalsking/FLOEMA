@@ -21,7 +21,9 @@ export default class Canvas {
   }
 
   createRenderer() {
-    this.renderer = new Renderer()
+    this.renderer = new Renderer({
+      alpha: true
+    })
 
     this.gl = this.renderer.gl
     document.body.append(this.gl.canvas)
@@ -92,9 +94,6 @@ export default class Canvas {
     this.x.end = x
     this.y.end = y
 
-    // this.x.distance = this.x.start - this.x.end
-    // this.y.distance = this.y.start - this.y.end
-
     if (this.home) {
       this.home.onTouchMove({
         x: this.x,
@@ -110,9 +109,6 @@ export default class Canvas {
 
     this.x.end = x
     this.y.end = y
-
-    // this.x.distance = this.x.start - this.x.end
-    // this.y.distance = this.y.start - this.y.end
 
     if (this.home) {
       this.home.onTouchUp({
