@@ -6,6 +6,7 @@ import Home from 'pages/Home'
 import Preloader from 'components/Preloader'
 import Navigation from 'components/Navigation'
 import Canvas from 'components/Canvas'
+import NormalizeWheel from 'normalize-wheel'
 
 class App {
   constructor() {
@@ -94,6 +95,8 @@ class App {
   onResize() {
     this.canvas?.onResize()
     this.page?.onResize()
+
+    this.frame = window.requestAnimationFrame(this.update.bind(this))
   }
 
   onTouchDown(event) {
@@ -106,6 +109,12 @@ class App {
 
   onTouchUp(event) {
     this.canvas?.onTouchUp(event)
+  }
+
+  onWheel(event) {
+    const normalizedWheel = NormalizeWheel(event)
+    this.canvas?.onWheel(normalizedWheel)
+    this.page?.onWheel(normalizedWheel)
   }
 
   /**
@@ -121,6 +130,8 @@ class App {
    * Listeners.
    */
   addEventListeners() {
+    window.addEventListener('mousewheel', this.onWheel.bind(this))
+
     window.addEventListener('mousedown', this.onTouchDown.bind(this))
     window.addEventListener('mousemove', this.onTouchMove.bind(this))
     window.addEventListener('mouseup', this.onTouchUp.bind(this))
