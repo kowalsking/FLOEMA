@@ -1,4 +1,4 @@
-import Media from './Media'
+import Media from './Mediaa'
 import map from 'lodash/map'
 import { Plane, Transform } from 'ogl'
 import GSAP from 'gsap'
@@ -62,8 +62,6 @@ export default class {
    */
 
   onResize(event) {
-    map(this.medias, media => media.onResize(event))
-
     this.galleryBounds = this.galleryElement.getBoundingClientRect()
 
     this.sizes = event.sizes
@@ -71,6 +69,11 @@ export default class {
       width: this.galleryBounds.width / window.innerWidth * this.sizes.width,
       height: this.galleryBounds.height / window.innerHeight * this.sizes.height
     }
+
+    this.scroll.x = this.x.target = 0
+    this.scroll.y = this.y.target = 0
+
+    map(this.medias, media => media.onResize(event, this.scroll))
   }
 
   onTouchDown({ x, y }) {
@@ -99,7 +102,7 @@ export default class {
    * Update.
    */
   update() {
-    if (!this.galleryBounds) return
+    if (!this.galleryBounds || this.onResizing) return
 
     this.x.current = GSAP.utils.interpolate(this.x.current, this.x.target, this.x.lerp)
     this.y.current = GSAP.utils.interpolate(this.y.current, this.y.target, this.y.lerp)

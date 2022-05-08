@@ -63,8 +63,15 @@ export default class {
   /**
    * Events.
    */
-  onResize(sizes) {
+  onResize(sizes, scroll) {
+    this.extra = {
+      x: 0,
+      y: 0
+    }
+
     this.createBounds(sizes)
+    this.updateX(scroll && scroll.x)
+    this.updateY(scroll && scroll.y)
   }
 
   /**

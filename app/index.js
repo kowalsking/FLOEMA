@@ -93,10 +93,11 @@ class App {
   }
 
   onResize() {
-    this.canvas?.onResize()
     this.page?.onResize()
 
-    this.frame = window.requestAnimationFrame(this.update.bind(this))
+    window.requestAnimationFrame(_ => {
+      if (this.canvas && this.canvas.onResize) this.canvas.onResize()
+    })
   }
 
   onTouchDown(event) {
