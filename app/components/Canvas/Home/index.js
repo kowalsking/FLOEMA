@@ -1,4 +1,4 @@
-import Media from './Mediaa'
+import Media from './Media'
 import map from 'lodash/map'
 import { Plane, Transform } from 'ogl'
 import GSAP from 'gsap'
@@ -161,5 +161,13 @@ export default class {
 
       media.update(this.scroll)
     })
+  }
+
+  /**
+   * Destroy.
+   */
+
+  destroy() {
+    // this.group.setParent(null)
   }
 }

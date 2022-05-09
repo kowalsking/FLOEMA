@@ -33,7 +33,9 @@ class App {
   }
 
   createCanvas() {
-    this.canvas = new Canvas()
+    this.canvas = new Canvas({
+      template: this.template
+    })
   }
 
   createContent() {
