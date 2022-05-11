@@ -18,8 +18,10 @@ export default class Canvas {
     this.createRenderer()
     this.createCamera()
     this.createScene()
+
     this.onResize()
-    this.onRouteUpdate(this.template)
+
+    this.onChangeEnd(this.template)
   }
 
   createRenderer() {
@@ -73,7 +75,16 @@ export default class Canvas {
    * Events.
    */
 
-  onRouteUpdate(template) {
+  onChangeStart() {
+    if (this.home) {
+      this.home.hide()
+    }
+    if (this.about) {
+      this.about.hide()
+    }
+  }
+
+  onChangeEnd(template) {
     if (template === 'home') {
       this.createHome()
     } else {

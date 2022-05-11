@@ -13,6 +13,8 @@ export default class {
     this.createGalleries()
 
     this.group.setParent(scene)
+
+    this.show()
   }
 
   createGeometry() {
@@ -35,6 +37,17 @@ export default class {
   }
 
   /**
+   * Animations
+   */
+  show() {
+    map(this.galleries, gallery => gallery.show())
+  }
+
+  hide() {
+    map(this.galleries, gallery => gallery.hide())
+  }
+
+  /**
    * Events.
    */
 
@@ -42,15 +55,15 @@ export default class {
     map(this.galleries, gallery => gallery.onResize(event))
   }
 
-  onTouchDown({ x, y }) {
+  onTouchDown(event) {
     map(this.galleries, gallery => gallery.onTouchDown(event))
   }
 
-  onTouchMove({ x, y }) {
-    map(this.galleries, gallery => gallery.onTouchMove({ x, y }))
+  onTouchMove(event) {
+    map(this.galleries, gallery => gallery.onTouchMove(event))
   }
 
-  onTouchUp({ x, y }) {
+  onTouchUp(event) {
     map(this.galleries, gallery => gallery.onTouchUp(event))
   }
 

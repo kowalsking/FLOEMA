@@ -39,6 +39,8 @@ export default class {
     this.createGallery()
 
     this.group.setParent(this.scene)
+
+    this.show()
   }
 
   createGeometry() {
@@ -59,9 +61,20 @@ export default class {
   }
 
   /**
+   * Animations
+   */
+  show() {
+    map(this.medias, media => media.show())
+  }
+
+  hide() {
+    map(this.medias, media => media.hide())
+  }
+
+
+  /**
    * Events.
    */
-
   onResize(event) {
     this.galleryBounds = this.galleryElement.getBoundingClientRect()
 
