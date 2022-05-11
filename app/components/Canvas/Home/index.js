@@ -7,15 +7,11 @@ export default class {
   constructor({ gl, scene, sizes }) {
     this.group = new Transform()
     this.gl = gl
+    this.scene = scene
 
     this.galleryElement = document.querySelector('.home__gallery')
     this.mediasElements = document.querySelectorAll('.home__gallery__media__image')
     this.sizes = sizes
-
-    this.createGeometry()
-    this.createGallery()
-
-    this.group.setParent(scene)
 
     this.x = {
       current: 0,
@@ -38,6 +34,11 @@ export default class {
       x: 0,
       y: 0
     }
+
+    this.createGeometry()
+    this.createGallery()
+
+    this.group.setParent(this.scene)
   }
 
   createGeometry() {
@@ -84,6 +85,8 @@ export default class {
   onTouchMove({ x, y }) {
     const xDistance = x.start - x.end
     const yDistance = y.start - y.end
+
+    console.log('1')
 
     this.x.target = this.scrollCurrent.x - xDistance
     this.y.target = this.scrollCurrent.y - yDistance
@@ -168,6 +171,6 @@ export default class {
    */
 
   destroy() {
-    // this.group.setParent(null)
+    this.scene.removeChild(this.group)
   }
 }

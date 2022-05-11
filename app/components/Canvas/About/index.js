@@ -23,7 +23,6 @@ export default class {
     this.galleriesElements = document.querySelectorAll('.about__gallery')
 
     this.galleries = map(this.galleriesElements, (element, index) => {
-      console.log(element)
       return new Gallery({
         element,
         index,
@@ -48,7 +47,7 @@ export default class {
   }
 
   onTouchMove({ x, y }) {
-    map(this.galleries, gallery => gallery.onTouchMove(event))
+    map(this.galleries, gallery => gallery.onTouchMove({ x, y }))
   }
 
   onTouchUp({ x, y }) {
@@ -64,5 +63,12 @@ export default class {
    */
   update() {
     map(this.galleries, gallery => gallery.update())
+  }
+
+  /**
+   * Destroy.
+   */
+  destroy() {
+    map(this.galleries, gallery => gallery.destroy())
   }
 }
