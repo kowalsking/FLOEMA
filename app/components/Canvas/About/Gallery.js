@@ -88,7 +88,7 @@ export default class Gallery {
   /**
    * Update.
    */
-  update() {
+  update(y) {
     if (!this.bounds) return
 
     if (this.scroll.current < this.scroll.target) {
@@ -118,6 +118,7 @@ export default class Gallery {
 
       media.update(this.scroll.current)
 
+      this.group.position.y = y * this.sizes.height
       // media.mesh.position.y = Math.cos((media.mesh.position.x / this.width) * Math.PI) * 1 - 1
     })
   }
