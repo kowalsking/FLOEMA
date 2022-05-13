@@ -75,8 +75,7 @@ export default class {
    * Update.
    */
   update(scroll) {
-    const y = scroll.current / window.innerHeight
-    map(this.galleries, gallery => gallery.update(y))
+    map(this.galleries, gallery => gallery.update(scroll))
   }
 
   /**
