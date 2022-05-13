@@ -70,7 +70,7 @@ export default class Gallery {
     map(this.medias, media => media.onResize(event, this.scroll.current))
   }
 
-  onTouchDown({ x, y }) {
+  onTouchDown() {
     this.scroll.start = this.scroll.current
   }
 
@@ -80,9 +80,7 @@ export default class Gallery {
     this.scroll.target = this.scroll.start - distance
   }
 
-  onTouchUp({ x, y }) {
-
-  }
+  onTouchUp({ x, y }) { }
 
   /**
    * Update.
@@ -101,7 +99,7 @@ export default class Gallery {
       this.scroll.velocity = 1
     }
 
-    this.scroll.target -= this.scroll.velocity + y * 10
+    this.scroll.target -= this.scroll.velocity
     this.scroll.target += distance
 
     this.scroll.current = GSAP.utils.interpolate(this.scroll.current, this.scroll.target, this.scroll.lerp)
