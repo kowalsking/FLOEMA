@@ -9,8 +9,8 @@ export default class {
     this.gl = gl
     this.scene = scene
 
-    this.galleryElement = document.querySelector('.home__gallery')
-    this.mediasElements = document.querySelectorAll('.home__gallery__media__image')
+    this.galleryElement = document.querySelector('.collections__gallery__wrapper')
+    this.mediasElements = document.querySelectorAll('.collections__gallery__media')
     this.sizes = sizes
 
     this.scroll = {
