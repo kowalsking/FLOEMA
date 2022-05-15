@@ -10,6 +10,10 @@ export default class {
     this.scene = scene
 
     this.galleryElement = document.querySelector('.collections__gallery__wrapper')
+
+    this.collectionsElements = document.querySelectorAll('.collections__article')
+    this.collectionsElementsActive = 'collections__article--active'
+
     this.mediasElements = document.querySelectorAll('.collections__gallery__media')
     this.sizes = sizes
 
@@ -92,6 +96,24 @@ export default class {
   }
 
   /**
+   * Changed.
+   */
+
+  onChange(index) {
+    this.index = index
+
+    const selectedCollection = parseInt(this.mediasElements[this.index].getAttribute('data-index'))
+    console.log(selectedCollection)
+    map(this.collectionsElements, (element, elementIndex) => {
+      if (elementIndex === selectedCollection) {
+        element.classList.add(this.collectionsElementsActive)
+      } else {
+        element.classList.remove(this.collectionsElementsActive)
+      }
+    })
+  }
+
+  /**
    * Update.
    */
   update() {
@@ -112,6 +134,12 @@ export default class {
     map(this.medias, media => {
       media.update(this.scroll.current)
     })
+
+    const index = Math.floor(Math.abs(this.scroll.current / this.scroll.limit) * this.medias.length)
+
+    if (this.index !== index) {
+      this.onChange(index)
+    }
   }
 
   /**
