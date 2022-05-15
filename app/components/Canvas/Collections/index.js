@@ -16,16 +16,11 @@ export default class {
     this.scroll = {
       current: 0,
       target: 0,
-      lerp: 0.1
-    }
-
-    this.scroll = {
-      current: 0,
-      target: 0,
       start: 0,
       lerp: 0.1,
       velocity: 1
     }
+
     this.createGeometry()
     this.createGallery()
 
@@ -101,6 +96,8 @@ export default class {
   update() {
     if (!this.bounds) return
 
+    // this.scroll.target = GSAP.utils.clamp()
+
     this.scroll.current = GSAP.utils.interpolate(this.scroll.current, this.scroll.target, this.scroll.lerp)
 
     if (this.scroll.last < this.scroll.current) {
@@ -112,7 +109,7 @@ export default class {
     this.scroll.last = this.scroll.current
 
     map(this.medias, media => {
-      media.update(this.scroll)
+      media.update(this.scroll.current)
     })
   }
 

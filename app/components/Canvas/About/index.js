@@ -65,7 +65,6 @@ export default class {
 
   onTouchUp(event) {
     map(this.galleries, gallery => gallery.onTouchUp(event))
-    console.log('thhss.galleries', this.galleries)
   }
 
   onWheel({ pixelX, pixelY }) {

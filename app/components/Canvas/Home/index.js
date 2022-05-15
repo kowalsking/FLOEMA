@@ -99,8 +99,6 @@ export default class {
     const xDistance = x.start - x.end
     const yDistance = y.start - y.end
 
-    console.log('1')
-
     this.x.target = this.scrollCurrent.x - xDistance
     this.y.target = this.scrollCurrent.y - yDistance
   }
