@@ -67,10 +67,10 @@ export default class {
    * Events.
    */
   onResize(event) {
-    this.galleryBounds = this.galleryElement.getBoundingClientRect()
+    this.bounds = this.galleryElement.getBoundingClientRect()
 
     this.sizes = event.sizes
-    this.width = this.galleryBounds.width / window.innerWidth * this.sizes.width
+    this.width = this.bounds.width / window.innerWidth * this.sizes.width
 
     this.scroll.last = this.scroll.target = 0
 
@@ -99,7 +99,7 @@ export default class {
    * Update.
    */
   update() {
-    if (!this.galleryBounds || this.onResizing) return
+    if (!this.bounds) return
 
     this.scroll.current = GSAP.utils.interpolate(this.scroll.current, this.scroll.target, this.scroll.lerp)
 

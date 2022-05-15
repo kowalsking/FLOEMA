@@ -118,7 +118,7 @@ export default class {
    * Update.
    */
   update() {
-    if (!this.galleryBounds || this.onResizing) return
+    if (!this.galleryBounds) return
 
     this.x.current = GSAP.utils.interpolate(this.x.current, this.x.target, this.x.lerp)
     this.y.current = GSAP.utils.interpolate(this.y.current, this.y.target, this.y.lerp)
