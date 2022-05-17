@@ -24,6 +24,7 @@ export default class {
 
   createTexture() {
     this.texture = new Texture(this.gl)
+
     const image = this.element.querySelector('img')
 
     this.image = new window.Image()
