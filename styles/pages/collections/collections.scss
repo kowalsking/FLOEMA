@@ -31,6 +31,8 @@
 
 .collections__gallery {
   @extend %cover;
+
+  z-index: 1;
 }
 
 .collections__gallery__wrapper {
@@ -125,4 +127,14 @@
 .collections__mobile__item__title {
   font-family: $font-george-x, sans-serif;
   font-size: 12rem;
+}
+
+.collections__button {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 63.1rem;
+  width: 44.7rem;
+  position: absolute;
 }

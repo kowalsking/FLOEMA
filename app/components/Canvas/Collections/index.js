@@ -12,6 +12,8 @@ export default class {
 
     this.transformPrefix = Prefix('transform')
 
+    this.buttonElement = document.createElement('.collections__button')
+
     this.galleryElement = document.querySelector('.collections__gallery__wrapper')
     this.titlesElement = document.querySelector('.collections__titles')
 
@@ -118,7 +120,7 @@ export default class {
       }
     })
 
-    this.titlesElement.style[this.transformPrefix] = `translateY(-${25 * selectedCollection}%) translate(-50%, -50%) rotate(90deg)`
+    this.titlesElement.style[this.transformPrefix] = `translateY(-${25 * selectedCollection}%) translate(-50%, -50%) rotate(-90deg)`
   }
 
   /**

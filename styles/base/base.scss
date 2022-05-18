@@ -8,7 +8,6 @@
 html {
   @extend %cover;
 
-
   background: $color-contessa;
   color: $color-quarter-spanish-white;
   font-size: calc(100vw / 1920 * 10);
@@ -27,6 +26,11 @@ body {
 
   font-family: $font-suisse-bp;
   position: fixed;
+}
+
+canvas {
+  position: relative;
+  pointer-events: none;
 }
 
 a {
