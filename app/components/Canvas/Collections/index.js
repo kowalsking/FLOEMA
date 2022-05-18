@@ -12,7 +12,8 @@ export default class {
 
     this.transformPrefix = Prefix('transform')
 
-    this.galleryElement = document.querySelector('.collections__gallery__wrapper')
+    this.galleryElement = document.querySelector('.collections__gallery')
+    this.galleryWrapperElement = document.querySelector('.collections__gallery__wrapper')
     this.titlesElement = document.querySelector('.collections__titles')
 
     this.collectionsElements = document.querySelectorAll('.collections__article')
@@ -72,7 +73,7 @@ export default class {
   onResize(event) {
     this.sizes = event.sizes
 
-    this.bounds = this.galleryElement.getBoundingClientRect()
+    this.bounds = this.galleryWrapperElement.getBoundingClientRect()
 
     this.scroll.last = this.scroll.target = 0
 
@@ -130,6 +131,8 @@ export default class {
     this.scroll.target = GSAP.utils.clamp(-this.scroll.limit, 0, this.scroll.target)
 
     this.scroll.current = GSAP.utils.interpolate(this.scroll.current, this.scroll.target, this.scroll.lerp)
+
+    this.galleryElement.style[this.transformPrefix] = `translateX(${this.scroll.current}px)`
 
     if (this.scroll.last < this.scroll.current) {
       this.scroll.direction = 'right'

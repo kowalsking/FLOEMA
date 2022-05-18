@@ -42,9 +42,6 @@
   left: 50%;
   position: absolute;
   transform: translate(-44.7rem * 0.5, -50%);
-
-  // ?
-  visibility: hidden;
 }
 
 .collections__gallery__link {
@@ -63,6 +60,7 @@
 .collections__gallery__media {
   height: 63.1rem;
   width: 44.7rem;
+  visibility: hidden;
   position: relative;
 }
 
@@ -104,6 +102,9 @@
 }
 
 .collections__mobile {
+  // TODO remove
+  visibility: hidden;
+
   display: flex;
   position: absolute;
   bottom: 5rem;

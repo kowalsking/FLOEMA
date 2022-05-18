@@ -116,8 +116,8 @@ app.get('/detail/:uid', async (req, res) => {
 
   res.render('pages/detail', {
     ...defaults,
-    product,
-    home
+    home,
+    product
   })
 })
 
