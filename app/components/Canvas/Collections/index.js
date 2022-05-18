@@ -10,7 +10,7 @@ export default class {
     this.gl = gl
     this.scene = scene
 
-    this.prefixTransform = Prefix('transform')
+    this.transformPrefix = Prefix('transform')
 
     this.galleryElement = document.querySelector('.collections__gallery__wrapper')
     this.titlesElement = document.querySelector('.collections__titles')
@@ -117,6 +117,8 @@ export default class {
         element.classList.remove(this.collectionsElementsActive)
       }
     })
+
+    this.titlesElement.style[this.transformPrefix] = `translateY(-50%, -${25 * selectedCollection}%)`
   }
 
   /**
