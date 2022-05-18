@@ -103,7 +103,9 @@ export default class {
     this.index = index
 
     const selectedCollection = parseInt(this.mediasElements[this.index].getAttribute('data-index'))
+
     console.log(selectedCollection)
+
     map(this.collectionsElements, (element, elementIndex) => {
       if (elementIndex === selectedCollection) {
         element.classList.add(this.collectionsElementsActive)
