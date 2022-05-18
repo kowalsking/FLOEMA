@@ -2,6 +2,7 @@ import Media from './Media'
 import map from 'lodash/map'
 import { Plane, Transform } from 'ogl'
 import GSAP from 'gsap'
+import Prefix from 'prefix'
 
 export default class {
   constructor({ gl, scene, sizes }) {
@@ -9,7 +10,10 @@ export default class {
     this.gl = gl
     this.scene = scene
 
+    this.prefixTransform = Prefix('transform')
+
     this.galleryElement = document.querySelector('.collections__gallery__wrapper')
+    this.titlesElement = document.querySelector('.collections__titles')
 
     this.collectionsElements = document.querySelectorAll('.collections__article')
     this.collectionsElementsActive = 'collections__article--active'
