@@ -12,8 +12,6 @@ export default class {
 
     this.transformPrefix = Prefix('transform')
 
-    this.buttonElement = document.createElement('.collections__button')
-
     this.galleryElement = document.querySelector('.collections__gallery__wrapper')
     this.titlesElement = document.querySelector('.collections__titles')
 
