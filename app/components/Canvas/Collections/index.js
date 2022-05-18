@@ -118,7 +118,7 @@ export default class {
       }
     })
 
-    this.titlesElement.style[this.transformPrefix] = `translateY(-50%, -${25 * selectedCollection}%)`
+    this.titlesElement.style[this.transformPrefix] = `translateY(-${25 * selectedCollection}%) translate(-50%, -50%) rotate(90deg)`
   }
 
   /**
