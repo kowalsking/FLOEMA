@@ -53,10 +53,21 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 const handleRequest = async api => {
+  const about = await api.getSingle('about')
   const preloader = await api.getSingle('preloader')
   const navigation = await api.getSingle('navigation')
+  const home = await api.getSingle('home')
+
+  const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
+    fetchLinks: 'product.image'
+  })
+
+  console.log(about, home, collections)
+
+  let preloader = []
 
   return {
+    home,
     navigation,
     preloader
   }
@@ -65,15 +76,9 @@ const handleRequest = async api => {
 app.get('/', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-  const home = await api.getSingle('home')
-
-  const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
-    fetchLinks: 'product.image'
-  })
 
   res.render('pages/home', {
     ...defaults,
-    home,
     collections,
   })
 })
@@ -81,7 +86,6 @@ app.get('/', async (req, res) => {
 app.get('/about', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-  const about = await api.getSingle('about')
 
   res.render('pages/about', {
     ...defaults,
@@ -92,15 +96,12 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-  const home = await api.getSingle('home')
 
-  const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collectu'), {
     fetchLinks: 'product.image'
   })
 
   res.render('pages/collections', {
     ...defaults,
-    home,
     collections
   })
 })
@@ -108,7 +109,6 @@ app.get('/collections', async (req, res) => {
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-  const home = await api.getSingle('home')
 
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collectu.title'
@@ -116,7 +116,6 @@ app.get('/detail/:uid', async (req, res) => {
 
   res.render('pages/detail', {
     ...defaults,
-    home,
     product
   })
 })
