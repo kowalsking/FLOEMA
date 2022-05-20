@@ -87,6 +87,7 @@ const handleRequest = async api => {
   })
 
   return {
+    about,
     collections,
     home,
     preloader,
