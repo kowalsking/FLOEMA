@@ -62,7 +62,7 @@ const handleRequest = async api => {
     fetchLinks: 'product.image'
   })
 
-  let assets = []
+  const assets = []
 
   home.data.gallery.forEach(item => {
     assets.push(item.image.url)
@@ -110,8 +110,7 @@ app.get('/about', async (req, res) => {
   const defaults = await handleRequest(api)
 
   res.render('pages/about', {
-    ...defaults,
-    about
+    ...defaults
   })
 })
 
@@ -120,8 +119,7 @@ app.get('/collections', async (req, res) => {
   const defaults = await handleRequest(api)
 
   res.render('pages/collections', {
-    ...defaults,
-    collections
+    ...defaults
   })
 })
 
