@@ -1,10 +1,10 @@
 import Component from '../classes/Component'
-import each from 'lodash/each'
+import { Texture } from 'ogl'
 import GSAP from 'gsap'
 import { split } from 'utils/text'
 
 export default class Preloader extends Component {
-  constructor() {
+  constructor({ canvas }) {
     super({
       element: '.preloader',
       elements: {
@@ -13,6 +13,8 @@ export default class Preloader extends Component {
         numberText: '.preloader__number__text'
       }
     })
+
+    this.canvas = canvas
 
     window.TEXTURES = {}
 
@@ -33,8 +35,23 @@ export default class Preloader extends Component {
 
   createLoader() {
     window.ASSETS.forEach(image => {
-      const texture =
+
+      const texture = new Texture(this.canvas.gl, {
+        generateMipmaps: false
+      })
+
+      const media = new window.Image()
+
+      media.crossOrigin = 'anonymous'
+      media.src = image
+      media.onload = _ => {
+        texture.image = media
+
+        this.onAssetLoaded()
+      }
     })
+
+    window.TEXTURE[image] = texture
   }
 
   onAssetLoaded(image) {

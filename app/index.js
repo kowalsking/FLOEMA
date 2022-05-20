@@ -28,7 +28,10 @@ class App {
   }
 
   createPreloader() {
-    this.preloader = new Preloader()
+    this.preloader = new Preloader({
+      canvas: this.canvas
+    })
+
     this.preloader.once('completed', this.onPreloaded.bind(this))
   }
 
