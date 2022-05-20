@@ -35,7 +35,7 @@ export default class Preloader extends Component {
 
   createLoader() {
     window.ASSETS.forEach(image => {
-
+      if (!image) image = 'https://images.prismic.io/floema-k/6a32bbf4-f600-4f1c-a9ea-46ba0395452c_9.jpg?auto=compress,format'
       const texture = new Texture(this.canvas.gl, {
         generateMipmaps: false
       })
@@ -49,9 +49,9 @@ export default class Preloader extends Component {
 
         this.onAssetLoaded()
       }
-    })
 
-    window.TEXTURES[image] = texture
+      window.TEXTURES[image] = texture
+    })
   }
 
   onAssetLoaded(image) {
