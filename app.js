@@ -64,12 +64,28 @@ const handleRequest = async api => {
 
   console.log(about, home, collections)
 
-  let preloader = []
+  let assets = []
+
+  home.data.gallery.forEach(item => {
+    assets.push(item.image.url)
+  })
+
+  about.data.gallery.forEach(item => {
+    assets.push.item.image.ulr
+  })
+
+  about.data.body.forEach(item => {
+    if (section.slice_type == 'gallery') {
+
+    }
+  })
 
   return {
+    collections,
     home,
+    preloader,
     navigation,
-    preloader
+    assets
   }
 }
 
@@ -96,9 +112,6 @@ app.get('/about', async (req, res) => {
 app.get('/collections', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-
-    fetchLinks: 'product.image'
-  })
 
   res.render('pages/collections', {
     ...defaults,
