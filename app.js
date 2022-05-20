@@ -62,8 +62,6 @@ const handleRequest = async api => {
     fetchLinks: 'product.image'
   })
 
-  console.log(about, home, collections)
-
   let assets = []
 
   home.data.gallery.forEach(item => {
@@ -71,13 +69,21 @@ const handleRequest = async api => {
   })
 
   about.data.gallery.forEach(item => {
-    assets.push.item.image.ulr
+    assets.push(item.image.ulr)
   })
 
   about.data.body.forEach(item => {
     if (section.slice_type == 'gallery') {
-
+      section.items.forEach(item => {
+        assets.push(item.image.url)
+      })
     }
+  })
+
+  collections.forEach(collection => {
+    collection.data.products.forEach(item => {
+      assets.push(item.products_product.data.image.url)
+    })
   })
 
   return {
