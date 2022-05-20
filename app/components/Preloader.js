@@ -10,8 +10,7 @@ export default class Preloader extends Component {
       elements: {
         title: '.preloader__text',
         number: '.preloader__number',
-        numberText: '.preloader__number__text',
-        images: document.querySelectorAll('img')
+        numberText: '.preloader__number__text'
       }
     })
 
