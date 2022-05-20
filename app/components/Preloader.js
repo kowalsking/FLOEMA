@@ -14,6 +14,8 @@ export default class Preloader extends Component {
       }
     })
 
+    window.TEXTURES = {}
+
     split({
       element: this.elements.title,
       expression: '<br>'
@@ -31,7 +33,7 @@ export default class Preloader extends Component {
 
   createLoader() {
     window.ASSETS.forEach(image => {
-
+      const texture =
     })
   }
 
