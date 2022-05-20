@@ -72,7 +72,7 @@ const handleRequest = async api => {
     assets.push(item.image.ulr)
   })
 
-  about.data.body.forEach(item => {
+  about.data.body.forEach(section => {
     if (section.slice_type == 'gallery') {
       section.items.forEach(item => {
         assets.push(item.image.url)
@@ -100,8 +100,7 @@ app.get('/', async (req, res) => {
   const defaults = await handleRequest(api)
 
   res.render('pages/home', {
-    ...defaults,
-    collections,
+    ...defaults
   })
 })
 
