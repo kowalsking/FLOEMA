@@ -51,12 +51,12 @@ export default class Preloader extends Component {
       }
     })
 
-    window.TEXTURE[image] = texture
+    window.TEXTURES[image] = texture
   }
 
   onAssetLoaded(image) {
     this.length += 1
-    const percent = this.length / this.elements.images.length
+    const percent = this.length / window.ASSETS.length
     this.elements.numberText.innerHTML = `${Math.round(percent * 100)}%`
     if (percent === 1) {
       this.onLoaded()
