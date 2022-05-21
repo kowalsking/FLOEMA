@@ -65,7 +65,6 @@ class App {
   onPreloaded() {
     this.onResize()
     this.canvas.onPreloaded()
-    this.preloader.destroy()
     this.page.show()
   }
 

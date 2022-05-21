@@ -89,6 +89,10 @@ export default class Preloader extends Component {
         autoAlpha: 0,
         duration: 1
       }, '-=1')
+
+      this.animateOut.call(_ => {
+        this.destroy()
+      })
     })
   }
 
