@@ -10,10 +10,10 @@ export default class Paragraph extends Animation {
   }
 
   animateIn() {
-    this.timelineIn = GSAP.timeline({
+    GSAP.fromTo(this.element, {
+      autoAlpha: 0,
       delay: 0.5
-    })
-    this.timelineIn.to(this.element, {
+    }, {
       autoAlpha: 1,
       duration: 1
     })
@@ -24,4 +24,6 @@ export default class Paragraph extends Animation {
       autoAlpha: 0
     })
   }
+
+  onResize() { }
 }
