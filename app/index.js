@@ -17,6 +17,7 @@ class App {
     this.createPages()
     this.addLinkListeners()
     this.addEventListeners()
+    this.onResize()
 
     this.update()
   }
@@ -62,9 +63,9 @@ class App {
    * Events.
    */
   onPreloaded() {
+    this.onResize()
     this.canvas.onPreloaded()
     this.preloader.destroy()
-    this.onResize()
     this.page.show()
   }
 
