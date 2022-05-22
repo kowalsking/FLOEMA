@@ -13,7 +13,7 @@ void main() {
 
   vec4 newPosition = modelViewMatrix * vec4(position, 1.0);
 
-  newPosition.z += sin(position.y);
+  newPosition.z += sin(position.y * PI);
 
   gl_Position = projectionMatrix * newPosition;
 }
