@@ -1,3 +1,5 @@
+#define PI 3.141592653589793238
+
 attribute vec2 uv;
 attribute vec3 position;
 
@@ -8,5 +10,10 @@ varying vec2 vUv;
 
 void main() {
   vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+
+  vec4 newPosition = modelViewMatrix * vec4(position, 1.0);
+
+  newPosition.z += sin(position.y);
+
+  gl_Position = projectionMatrix * newPosition;
 }
