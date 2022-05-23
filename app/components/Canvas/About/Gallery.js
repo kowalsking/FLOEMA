@@ -60,13 +60,9 @@ export default class Gallery {
 
   onResize(event) {
     this.bounds = this.elementWrapper.getBoundingClientRect()
-
     this.sizes = event.sizes
-
     this.width = this.bounds.width / window.innerWidth * this.sizes.width
-
     this.scroll.current = this.scroll.target = 0
-
     map(this.medias, media => media.onResize(event, this.scroll.current))
   }
 
