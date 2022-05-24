@@ -34,6 +34,7 @@ export default class {
       vertex,
       uniforms: {
         uAlpha: { value: 0 },
+        uViewportSizes: { value: [this.sizes.width, this.sizes.height] },
         tMap: { value: this.texture }
       }
     })
