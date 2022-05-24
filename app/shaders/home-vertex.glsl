@@ -3,6 +3,7 @@
 attribute vec2 uv;
 attribute vec3 position;
 
+uniform float uStrength;
 uniform vec2 uViewportSizes;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
