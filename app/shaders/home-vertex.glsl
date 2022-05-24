@@ -15,7 +15,7 @@ void main() {
   vec4 newPosition = modelViewMatrix * vec4(position, 1.0);
 
   // newPosition.z += sin(position.y / uViewportSizes.y * PI + PI / 2.0) * abs(uStrength);
-  newPosition.z -= sin(newPosition.y / uViewportSizes.y * PI + PI / 2.0);
+  newPosition.z -= sin((newPosition.y / uViewportSizes.y) + (newPosition.x / uViewportSizes.x) * PI + PI / 2.0);
 
   gl_Position = projectionMatrix * newPosition;
 }
