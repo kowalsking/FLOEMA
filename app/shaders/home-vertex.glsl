@@ -3,7 +3,7 @@
 attribute vec2 uv;
 attribute vec3 position;
 
-uniform float uStrength;
+uniform float uSpeed;
 uniform vec2 uViewportSizes;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
@@ -15,7 +15,7 @@ void main() {
 
   vec4 newPosition = modelViewMatrix * vec4(position, 1.0);
 
-  newPosition.z *= sin((newPosition.y / uViewportSizes.y) * (newPosition.x / uViewportSizes.x) * PI + PI / 2.0) * abs(uStrength);
+  newPosition.z *= sin((newPosition.y / uViewportSizes.y) * (newPosition.x / uViewportSizes.x) * PI + PI / 2.0) * abs(1.0 + uSpeed);
 
   gl_Position = projectionMatrix * newPosition;
 }
