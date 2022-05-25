@@ -100,7 +100,7 @@ export default class {
   }
 
   onTouchDown({ x, y }) {
-    this.speed.target = 0.1
+    this.speed.target = 1
     this.scrollCurrent.x = this.scroll.x
     this.scrollCurrent.y = this.scroll.y
   }
@@ -127,7 +127,6 @@ export default class {
    */
   update() {
     if (!this.galleryBounds) return
-
 
     this.speed.current = GSAP.utils.interpolate(this.speed.current, this.speed.target, this.speed.lerp)
 
