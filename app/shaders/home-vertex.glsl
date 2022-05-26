@@ -5,6 +5,7 @@ attribute vec3 position;
 
 uniform float uSpeed;
 uniform vec2 uViewportSizes;
+
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 
