@@ -119,7 +119,10 @@ export default class Canvas {
     this.isFromDetailsToCollection = this.template === 'details' && url.indexOf('collections') > -1
 
     if (this.isFromCollectionsToDetail || this.isFromDetailsToCollection) {
-      this.transition = new Transition()
+      this.transition = new Transition({
+        collections: this.collections,
+        url
+      })
     }
   }
 
