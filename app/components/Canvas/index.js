@@ -2,6 +2,7 @@ import { Camera, Renderer, Transform } from 'ogl'
 import Home from './Home'
 import About from './About'
 import Collections from './Collections'
+import Transition from './Transition'
 
 export default class Canvas {
   constructor({ template }) {
@@ -106,15 +107,19 @@ export default class Canvas {
       this.home.hide()
     }
 
-    this.isFromCollectionsToDetail = this.template === 'collections' && url.indexOf('detail') > -1
-    this.isFromDetailsToCollection = this.template === 'details' && url.indexOf('collections') > -1
-
     if (this.collections) {
       this.collections.hide()
     }
 
     if (this.about) {
       this.about.hide()
+    }
+
+    this.isFromCollectionsToDetail = this.template === 'collections' && url.indexOf('detail') > -1
+    this.isFromDetailsToCollection = this.template === 'details' && url.indexOf('collections') > -1
+
+    if (this.isFromCollectionsToDetail || this.isFromDetailsToCollection) {
+      this.transition = new Transition()
     }
   }
 
