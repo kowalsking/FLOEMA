@@ -121,6 +121,9 @@ export default class Canvas {
     if (this.isFromCollectionsToDetail || this.isFromDetailsToCollection) {
       this.transition = new Transition({
         collections: this.collections,
+        gl: this.gl,
+        scene: this.scene,
+        sizes: this.sizes,
         url
       })
     }
