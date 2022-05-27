@@ -106,6 +106,9 @@ export default class Canvas {
       this.home.hide()
     }
 
+    this.isFromCollectionsToDetail = this.template === 'collections'
+    this.isFromDetailsToCollection = this.template === 'details'
+
     if (this.collections) {
       this.collections.hide()
     }
