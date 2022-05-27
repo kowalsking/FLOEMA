@@ -5,12 +5,13 @@ import GSAP from 'gsap'
 
 export default class {
   constructor({ collections, gl, scene, sizes, url }) {
-    this.geometry = new Plane(this.gl)
     this.gl = gl
     this.collections = collections
     this.url = url
     this.scene = scene
     this.sizes = sizes
+
+    this.geometry = new Plane(this.gl)
 
     this.createTexture()
     this.createProgram()
