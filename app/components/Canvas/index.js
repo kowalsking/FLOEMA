@@ -101,13 +101,13 @@ export default class Canvas {
     this.onChangeEnd(this.template)
   }
 
-  onChangeStart() {
+  onChangeStart(template, url) {
     if (this.home) {
       this.home.hide()
     }
 
-    this.isFromCollectionsToDetail = this.template === 'collections'
-    this.isFromDetailsToCollection = this.template === 'details'
+    this.isFromCollectionsToDetail = this.template === 'collections' && url.indexOf('detail') > -1
+    this.isFromDetailsToCollection = this.template === 'details' && url.indexOf('collections') > -1
 
     if (this.collections) {
       this.collections.hide()
