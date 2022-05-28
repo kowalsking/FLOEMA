@@ -149,11 +149,9 @@ export default class {
     }
 
     map(this.medias, media => {
-      media.update(this.scroll.current)
+      media.update(this.scroll.current, this.index)
 
       media.mesh.position.y += Math.cos((media.mesh.position.x / this.sizes.width) * Math.PI * 0.1) * 40 -40
-
-      media.update()
     })
   }
 
