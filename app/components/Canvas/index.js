@@ -147,6 +147,8 @@ export default class Canvas {
     } else {
       this.destroyAbout()
     }
+
+    this.template = template
   }
 
   onResize() {
