@@ -125,9 +125,11 @@ export default class {
     this.updateX(scroll)
     this.updateY()
 
-    this.opacity.target = this.index === index ? 1 : 0.4
-    this.opacity.current = GSAP.utils.interpolate(this.opacity.current, this.opacity.target, this.opacity.lerp)
+    if (this.index === 0) {
+      this.opacity.target = this.index === index ? 1 : 0.4
+      this.opacity.current = GSAP.utils.interpolate(this.opacity.current, this.opacity.target, this.opacity.lerp)
 
-    this.program.uniforms.uAlpha.value = this.opacity.current * this.opacity.multiplier
+      this.program.uniforms.uAlpha.value = this.opacity.current * this.opacity.multiplier
+    }
   }
 }
