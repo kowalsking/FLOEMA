@@ -16,11 +16,6 @@ export default class {
     this.createTexture()
     this.createProgram()
     this.createMesh()
-
-    this.extra = {
-      x: 0,
-      y: 0
-    }
   }
 
   createTexture() {
@@ -48,6 +43,8 @@ export default class {
     this.mesh.scale.x = this.media.mesh.scale.x
     this.mesh.scale.y = this.media.mesh.scale.y
     this.mesh.scale.z = this.media.mesh.scale.z
+
+    this.mesh.position.z = 1
 
     this.mesh.setParent(this.scene)
   }
