@@ -44,7 +44,7 @@ export default class {
     this.mesh.scale.y = this.media.mesh.scale.y
     this.mesh.scale.z = this.media.mesh.scale.z
 
-    this.mesh.position.z = 1
+    this.mesh.position.z = this.media.mesh.position.z + 0.01
 
     this.mesh.setParent(this.scene)
   }
@@ -52,5 +52,7 @@ export default class {
   /**
    * Animations.
    */
-  transition() {}
+  transition(element) {
+    // GSAP.from(this)
+  }
 }
