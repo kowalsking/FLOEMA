@@ -24,10 +24,12 @@ export default class {
   }
 
   createTexture() {
-    console.log(this.collections)
+    const { index, medias } = this.collections
+    const { texture } = medias[index]
+    console.log(texture)
     // const image = this.element.querySelector('.collections__gallery__media__image')
 
-    // this.texture = window.TEXTURES[image.getAttribute('data-src')]
+    this.texture = texture
   }
 
   createProgram() {
