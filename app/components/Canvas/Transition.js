@@ -25,11 +25,7 @@ export default class {
 
   createTexture() {
     const { index, medias } = this.collections
-    const { texture } = medias[index]
-    console.log(texture)
-    // const image = this.element.querySelector('.collections__gallery__media__image')
-
-    this.texture = texture
+    this.media = medias[index]
   }
 
   createProgram() {
@@ -38,7 +34,7 @@ export default class {
       vertex,
       uniforms: {
         uAlpha: { value: 1 },
-        tMap: { value: this.texture }
+        tMap: { value: this.media.texture }
       }
     })
   }
@@ -48,6 +44,10 @@ export default class {
       geometry: this.geometry,
       program: this.program
     })
+
+    this.mesh.scale.x = this.media.mesh.scale.x
+    this.mesh.scale.y = this.media.mesh.scale.y
+    this.mesh.scale.z = this.media.mesh.scale.z
 
     this.mesh.setParent(this.scene)
   }
