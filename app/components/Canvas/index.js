@@ -150,6 +150,10 @@ export default class Canvas {
   onChangeEnd(template) {
     if (template === 'collections') {
       this.createCollections()
+
+      if (this.transition) {
+        this.transition.animateCollections(this.collections)
+      }
     } else if (this.collections) {
       this.destroyCollections()
     }
@@ -162,6 +166,10 @@ export default class Canvas {
 
     if (template === 'detail') {
       this.createDetail()
+
+      if (this.transition) {
+        this.transition.animateDetail(this.detail)
+      }
     } else if (this.detail) {
       this.destroyDetail()
     }

@@ -52,7 +52,21 @@ export default class {
   /**
    * Animations.
    */
-  transition(element) {
-    // GSAP.from(this)
+  animateDetail(element) {
+    console.log(element)
+    GSAP.to(this.math.scale, {
+      duration: 1.5,
+      ease: 'expo.inOut',
+      x: element.mesh.scale.x,
+      y: element.mesh.scale.y,
+      z: element.mesh.scale.z,
+    })
+    GSAP.to(this.math.position, {
+      duration: 1.5,
+      ease: 'expo.inOut',
+      x: element.mesh.position.x,
+      y: element.mesh.position.y,
+      z: element.mesh.position.z,
+    })
   }
 }
