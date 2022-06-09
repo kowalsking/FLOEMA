@@ -1,14 +1,13 @@
 import { Mesh, Plane, Program } from 'ogl'
-import vertex from 'shaders/collections-vertex.glsl'
-import fragment from 'shaders/collections-fragment.glsl'
+import vertex from 'shaders/plane -vertex.glsl'
+import fragment from 'shaders/plane -fragment.glsl'
 import GSAP from 'gsap'
 
 export default class {
-  constructor({ gl, index, scene, sizes }) {
+  constructor({ gl, scene, sizes }) {
     this.gl = gl
     this.element = document.querySelector('.detail__media__image')
     this.scene = scene
-    this.index = index
     this.sizes = sizes
 
     this.geometry = new Plane(this.gl)
@@ -29,7 +28,7 @@ export default class {
       fragment,
       vertex,
       uniforms: {
-        uAlpha: { value: 0 },
+        uAlpha: { value: 1 },
         tMap: { value: this.texture }
       }
     })

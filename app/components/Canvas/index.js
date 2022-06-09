@@ -2,6 +2,7 @@ import { Camera, Renderer, Transform } from 'ogl'
 import Home from './Home'
 import About from './About'
 import Collections from './Collections'
+import Details from './Details'
 import Transition from './Transition'
 
 export default class Canvas {
@@ -95,6 +96,23 @@ export default class Canvas {
   }
 
   /**
+   * Details.
+   */
+  createDetails() {
+    this.details = new Details({
+      gl: this.gl,
+      scene: this.scene,
+      sizes: this.sizes
+    })
+  }
+
+  destroyDetails() {
+    if (!this.details) return
+    this.details.destroy()
+    this.details = null
+  }
+
+  /**
    * Events.
    */
 
@@ -130,13 +148,7 @@ export default class Canvas {
   }
 
   onChangeEnd(template) {
-    if (template === 'home') {
-      this.createHome()
-    } else {
-      this.destroyHome()
-    }
-
-    if (template === 'collections') {
+if (template === 'collections') {
       this.createCollections()
     } else if (this.collections) {
       this.destroyCollections()
@@ -144,8 +156,20 @@ export default class Canvas {
 
     if (template === 'about') {
       this.createAbout()
-    } else {
+    } else if (this.about) {
       this.destroyAbout()
+    }
+
+    if (template === 'details') {
+      this.createDetails()
+    } else if (this.details) {
+      this.destroyDetails()
+    }
+
+    if (template === 'home') {
+      this.createHome()
+    } else {
+      this.destroyHome()
     }
 
     this.template = template
