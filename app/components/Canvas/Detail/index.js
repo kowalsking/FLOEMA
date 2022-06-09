@@ -19,9 +19,9 @@ export default class {
   }
 
   createTexture() {
-    const image =
+    const image = image.getAttribute('data-src')
 
-    this.texture = window.TEXTURES[image.getAttribute('data-src')]
+    this.texture = window.TEXTURES[image]
   }
 
   createProgram() {
