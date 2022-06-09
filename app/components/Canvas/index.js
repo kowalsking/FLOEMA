@@ -148,7 +148,7 @@ export default class Canvas {
   }
 
   onChangeEnd(template) {
-if (template === 'collections') {
+    if (template === 'collections') {
       this.createCollections()
     } else if (this.collections) {
       this.destroyCollections()
@@ -202,6 +202,10 @@ if (template === 'collections') {
       this.collections.onResize(values)
     }
 
+    if (this.detail) {
+      this.detail.onResize(values)
+    }
+
     if (this.home) {
       this.home.onResize(values)
     }
@@ -223,6 +227,10 @@ if (template === 'collections') {
 
     if (this.collections) {
       this.collections.onTouchDown(values)
+    }
+
+    if (this.detail) {
+      this.detail.onTouchDown(values)
     }
 
     if (this.home) {
@@ -252,6 +260,10 @@ if (template === 'collections') {
       this.collections.onTouchMove(values)
     }
 
+    if (this.detail) {
+      this.detail.onTouchMove(values)
+    }
+
     if (this.home) {
       this.home.onTouchMove(values)
     }
@@ -276,6 +288,10 @@ if (template === 'collections') {
 
     if (this.collections) {
       this.collections.onTouchUp(values)
+    }
+
+    if (this.detail) {
+      this.detail.onTouchUp(values)
     }
 
     if (this.home) {
@@ -303,6 +319,10 @@ if (template === 'collections') {
 
     if (this.collections) {
       this.collections.update()
+    }
+
+    if (this.detail) {
+      this.detail.update()
     }
 
     if (this.home) {
