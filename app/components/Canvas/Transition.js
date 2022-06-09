@@ -55,14 +55,14 @@ export default class {
   animateDetail(element) {
     console.log(element)
 
-    GSAP.to(this.math.scale, {
+    GSAP.to(this.mesh.scale, {
       duration: 1.5,
       ease: 'expo.inOut',
       x: element.mesh.scale.x,
       y: element.mesh.scale.y,
       z: element.mesh.scale.z,
     })
-    GSAP.to(this.math.position, {
+    GSAP.to(this.mesh.position, {
       duration: 1.5,
       ease: 'expo.inOut',
       x: element.mesh.position.x,
