@@ -50,24 +50,39 @@ export default class {
   }
 
   /**
+   * Element.
+   */
+
+  setElement(element) {
+    this.scale = {
+      x: this.element.mesh.scale.x,
+      y: this.element.mesh.scale.y,
+      z: this.element.mesh.scale.z
+    }
+
+    this.position = {
+      x: this.element.mesh.position.x,
+      y: this.element.mesh.position.y,
+      z: this.element.mesh.position.z
+    }
+  }
+  /**
    * Animations.
    */
-  animateDetail(element) {
-    console.log(element)
+  animate(onComplete, flag) {
+    if (flag === 'detail') {
+      GSAP.to(this.mesh.scale, {
+        duration: 1.5,
+        ease: 'expo.inOut',
+        ...this.scale
+      })
 
-    GSAP.to(this.mesh.scale, {
-      duration: 1.5,
-      ease: 'expo.inOut',
-      x: element.mesh.scale.x,
-      y: element.mesh.scale.y,
-      z: element.mesh.scale.z,
-    })
-    GSAP.to(this.mesh.position, {
-      duration: 1.5,
-      ease: 'expo.inOut',
-      x: element.mesh.position.x,
-      y: element.mesh.position.y,
-      z: element.mesh.position.z,
-    })
+      GSAP.to(this.mesh.position, {
+        duration: 1.5,
+        ease: 'expo.inOut',
+        ...this.position,
+        onComplete
+      })
+    }
   }
 }

@@ -4,17 +4,20 @@ import fragment from 'shaders/plane-fragment.glsl'
 import GSAP from 'gsap'
 
 export default class {
-  constructor({ gl, scene, sizes }) {
+  constructor({ gl, scene, sizes, transition }) {
     this.gl = gl
     this.element = document.querySelector('.detail__media__image')
     this.scene = scene
     this.sizes = sizes
+    this.transition = transition
 
     this.geometry = new Plane(this.gl)
 
     this.createTexture()
     this.createProgram()
     this.createMesh()
+
+    this.show()
   }
 
   createTexture() {
@@ -56,6 +59,11 @@ export default class {
    * Animations.
    */
   show() {
+    if (this.transition) {
+      this.transition.animate(_ => {
+        this.program.uniforms.uAlpha.value = 1
+      }, 'detail')
+    }
 
   }
 
