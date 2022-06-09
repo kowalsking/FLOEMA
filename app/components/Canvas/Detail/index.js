@@ -18,7 +18,7 @@ export default class {
   }
 
   createTexture() {
-    const image = image.getAttribute('data-src')
+    const image = this.element.getAttribute('data-src')
 
     this.texture = window.TEXTURES[image]
   }
@@ -70,6 +70,18 @@ export default class {
     this.createBounds(sizes)
     this.updateX()
     this.updateY()
+  }
+
+  onTouchDown() {
+
+  }
+
+  onTouchMove() {
+
+  }
+
+  onTouchUp() {
+
   }
 
   /**
