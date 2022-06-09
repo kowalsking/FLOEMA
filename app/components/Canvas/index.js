@@ -2,7 +2,7 @@ import { Camera, Renderer, Transform } from 'ogl'
 import Home from './Home'
 import About from './About'
 import Collections from './Collections'
-import Details from './Details'
+import Detail from './Detail'
 import Transition from './Transition'
 
 export default class Canvas {
@@ -96,20 +96,20 @@ export default class Canvas {
   }
 
   /**
-   * Details.
+   * Detail.
    */
-  createDetails() {
-    this.details = new Details({
+  createDetail() {
+    this.detail = new Detail({
       gl: this.gl,
       scene: this.scene,
       sizes: this.sizes
     })
   }
 
-  destroyDetails() {
-    if (!this.details) return
-    this.details.destroy()
-    this.details = null
+  destroyDetail() {
+    if (!this.detail) return
+    this.detail.destroy()
+    this.detail = null
   }
 
   /**
@@ -134,9 +134,9 @@ export default class Canvas {
     }
 
     this.isFromCollectionsToDetail = this.template === 'collections' && url.indexOf('detail') > -1
-    this.isFromDetailsToCollection = this.template === 'details' && url.indexOf('collections') > -1
+    this.isFromDetailToCollection = this.template === 'detail' && url.indexOf('collections') > -1
 
-    if (this.isFromCollectionsToDetail || this.isFromDetailsToCollection) {
+    if (this.isFromCollectionsToDetail || this.isFromDetailToCollection) {
       this.transition = new Transition({
         collections: this.collections,
         gl: this.gl,
@@ -160,10 +160,10 @@ if (template === 'collections') {
       this.destroyAbout()
     }
 
-    if (template === 'details') {
-      this.createDetails()
-    } else if (this.details) {
-      this.destroyDetails()
+    if (template === 'detail') {
+      this.createDetail()
+    } else if (this.detail) {
+      this.destroyDetail()
     }
 
     if (template === 'home') {
