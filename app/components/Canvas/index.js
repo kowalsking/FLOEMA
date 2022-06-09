@@ -1,3 +1,4 @@
+import GSAP from 'gsap'
 import { Camera, Renderer, Transform } from 'ogl'
 import Home from './Home'
 import About from './About'
@@ -167,9 +168,11 @@ export default class Canvas {
     if (template === 'detail') {
       this.createDetail()
 
-      if (this.transition) {
-        this.transition.animateDetail(this.detail)
-      }
+      GSAP.delayedCall(0.5, _ => {
+        if (this.transition) {
+          this.transition.animateDetail(this.detail)
+        }
+      })
     } else if (this.detail) {
       this.destroyDetail()
     }

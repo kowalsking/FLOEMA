@@ -54,6 +54,7 @@ export default class {
    */
   animateDetail(element) {
     console.log(element)
+
     GSAP.to(this.math.scale, {
       duration: 1.5,
       ease: 'expo.inOut',
