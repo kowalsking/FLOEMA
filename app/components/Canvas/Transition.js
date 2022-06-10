@@ -27,6 +27,7 @@ export default class {
     this.program = new Program(this.gl, {
       fragment,
       vertex,
+      
       uniforms: {
         uAlpha: { value: 1 },
         tMap: { value: this.media.texture }
