@@ -70,46 +70,28 @@ export default class {
    */
 
   animate(element, onComplete) {
-    if (this.transition === 'detail') {
-      const timeline = GSAP.timeline({
-        onComplete
-      })
+    const timeline = GSAP.timeline({
+      onComplete
+    })
 
-      timeline.to(this.mesh.scale, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        x: element.scale.x,
-        y: element.scale.y,
-        z: element.scale.z
-      })
+    timeline.to(this.mesh.scale, {
+      duration: 1.5,
+      ease: 'expo.inOut',
+      x: element.scale.x,
+      y: element.scale.y,
+      z: element.scale.z
+    }, 0)
 
-      timeline.to(this.mesh.position, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        x: element.position.x,
-        y: element.position.y,
-        z: element.position.z
-      })
-    } else {
-      const timeline = GSAP.timeline({
-        onComplete
-      })
+    timeline.to(this.mesh.position, {
+      duration: 1.5,
+      ease: 'expo.inOut',
+      x: element.position.x,
+      y: element.position.y,
+      z: element.position.z
+    }, 0)
 
-      timeline.to(this.mesh.scale, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        x: element.scale.x,
-        y: element.scale.y,
-        z: element.scale.z
-      })
-
-      timeline.to(this.mesh.position, {
-        duration: 1.5,
-        ease: 'expo.inOut',
-        x: element.position.x,
-        y: element.position.y,
-        z: element.position.z
-      })
-    }
+    timeline.call(_ => {
+      this.scene.removeChild(this.mesh)
+    })
   }
 }

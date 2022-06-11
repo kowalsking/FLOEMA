@@ -11,12 +11,6 @@ export default class {
     this.scene = scene
     this.index = index
     this.sizes = sizes
-
-    this.createTexture()
-    this.createProgram()
-    this.createMesh()
-    this.createBounds({ sizes: this.sizes })
-
     this.extra = {
       x: 0,
       y: 0
@@ -28,6 +22,11 @@ export default class {
       multiplier: 0,
       lerp: 0.1
     }
+
+    this.createTexture()
+    this.createProgram()
+    this.createMesh()
+    this.createBounds({ sizes: this.sizes })
   }
 
   createTexture() {

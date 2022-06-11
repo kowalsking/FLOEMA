@@ -12,15 +12,16 @@ export default class {
     this.index = index
     this.sizes = sizes
 
-    this.createTexture()
-    this.createProgram()
-    this.createMesh()
-    this.createBounds({ sizes: this.sizes })
-
     this.extra = {
       x: 0,
       y: 0
     }
+
+    this.createTexture()
+    this.createProgram()
+    this.createMesh()
+
+    this.createBounds({ sizes: this.sizes })
   }
 
   createTexture() {
