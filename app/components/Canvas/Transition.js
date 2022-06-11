@@ -71,21 +71,24 @@ export default class {
 
   animate(element, onComplete) {
     if (this.transition === 'detail') {
-      GSAP.to(this.mesh.scale, {
+      const timeline = GSAP.timeline({
+        delay: 0.5,
+        onComplete
+      })
+      timeline.to(this.mesh.scale, {
         duration: 1.5,
         ease: 'expo.inOut',
-        x: element.mesh.scale.x,
-        y: element.mesh.scale.y,
-        z: element.mesh.scale.z
+        x: element.scale.x,
+        y: element.scale.y,
+        z: element.scale.z
       })
 
-      GSAP.to(this.mesh.position, {
+      timeline.to(this.mesh.position, {
         duration: 1.5,
         ease: 'expo.inOut',
-        onComplete,
-        x: element.mesh.position.x,
-        y: element.mesh.position.y,
-        z: element.mesh.position.z
+        x: element.position.x,
+        y: element.position.y,
+        z: element.position.z
       })
     } else {
 

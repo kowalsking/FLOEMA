@@ -18,6 +18,7 @@ export default class {
     this.createTexture()
     this.createProgram()
     this.createMesh()
+    this.createBounds({ sizes: this.sizes })
 
     this.show()
   }
