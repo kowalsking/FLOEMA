@@ -113,16 +113,18 @@ export default class {
     this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width) + this.extra.x
   }
 
-  updateY(y = 0) {
-    this.y = (this.bounds.top + y) / window.innerHeight
-
-    this.mesh.position.y = (this.sizes.height / 2) - (this.mesh.scale.y / 2) - (this.y * this.sizes.height) + this.extra.y
-  }
-
   update(scroll) {
     this.updateX(scroll)
-    this.updateY()
 
-    this.program.uniforms.uAlpha.value = this.opacity.multiplier
+    const amplitude = 0.1
+    const frequency = 1
+
+    this.mesh.rotation.z = -0.02 * Math.PI * Math.sin(this.index / frequency)
+    this.mesh.position.y = amplitude * Math.sin(this.index / frequency)
+
+    this.opacity.target = index === this.index ? 1 : 0.4
+    this.opacity.current = GSAP.utils.interpolate(this.opacity.current, this.opacity.target, this.opacity.lerp)
+
+    this.program.uniforms.uAlpha.value = this.opacity.multiplier * this.opacity.current
   }
 }
