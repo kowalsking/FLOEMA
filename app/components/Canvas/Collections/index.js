@@ -65,25 +65,29 @@ export default class {
    * Animations
    */
   async show() {
-
     if (this.transition) {
       const { src } = this.transition.mesh.program.uniforms.tMap.value.image
       const texture = window.TEXTURES[src]
       const media = this.medias.find(media => media.texture === texture)
+      const scroll = -media.bounds.left - media.bounds.width / 2 + window.innerWidth / 2
 
-      GSAP.delayedCall(1, _ => {
-        this.scroll.current = this.scroll.target = this.scroll.last = this.scroll.start = -media.mesh.position.x
-      })
+      this.update()
 
-      this.transition.animate(this.medias[0].mesh, _ => {
-        map(this.medias, media => {
-          if (media !== this.media) {
-            media.show()
+      this.transition.animate({
+        rotation: media.mesh.rotation,
+        position: { x: 0, y: media.mesh.position.y, z: 0 },
+        scale: media.mesh.scale
+      }, _ => {
+        media.opacity.multiplier = 1
+
+        map(this.medias, item => {
+          if (media !== item) {
+            item.show()
           }
         })
       })
 
-      this.media.opacity.multiplier = 1
+      this.scroll.current = this.scroll.target = this.scroll.last = this.scroll.start = scroll
     } else {
       map(this.medias, media => media.show())
     }
@@ -145,8 +149,6 @@ export default class {
     })
 
     this.titlesElement.style[this.transformPrefix] = `translateY(-${25 * selectedCollection}%) translate(-50%, -50%) rotate(-90deg)`
-
-    this.media = this.medias[this.index]
   }
 
   /**

@@ -39,6 +39,10 @@ export default class {
     this.mesh.position.y = mesh.position.y
     this.mesh.position.z = mesh.position.z + 0.01
 
+    this.mesh.rotation.x = mesh.rotation.x
+    this.mesh.rotation.y = mesh.rotation.y
+    this.mesh.rotation.z = mesh.rotation.z
+
     this.mesh.setParent(this.scene)
   }
 
@@ -70,9 +74,7 @@ export default class {
    */
 
   animate(element, onComplete) {
-    const timeline = GSAP.timeline({
-      onComplete
-    })
+    const timeline = GSAP.timeline()
 
     timeline.to(this.mesh.scale, {
       duration: 1.5,
@@ -90,8 +92,20 @@ export default class {
       z: element.position.z
     }, 0)
 
+    timeline.to(this.mesh.position, {
+      duration: 1.5,
+      ease: 'expo.inOut',
+      x: element.rotation.x,
+      y: element.rotation.y,
+      z: element.rotation.z
+    }, 0)
+
+    timeline.call(_ => {
+      onComplete()
+    })
+
     timeline.call(_ => {
       this.scene.removeChild(this.mesh)
-    })
+    }, null, '+=0.2')
   }
 }

@@ -46,6 +46,8 @@ export default class {
       program: this.program
     })
 
+    this.mesh.rotation.z = Math.PI * 0.01
+
     this.mesh.setParent(this.scene)
   }
 
