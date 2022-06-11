@@ -6,6 +6,8 @@ import Prefix from 'prefix'
 
 export default class {
   constructor({ gl, scene, sizes }) {
+    this.id = 'collections'
+
     this.group = new Transform()
     this.gl = gl
     this.scene = scene

@@ -5,6 +5,8 @@ import GSAP from 'gsap'
 
 export default class {
   constructor({ gl, scene, sizes, transition }) {
+    this.id = 'detail'
+
     this.gl = gl
     this.element = document.querySelector('.detail__media__image')
     this.scene = scene
@@ -62,7 +64,7 @@ export default class {
     if (this.transition) {
       this.transition.animate(_ => {
         this.program.uniforms.uAlpha.value = 1
-      }, 'detail')
+      })
     }
 
   }
