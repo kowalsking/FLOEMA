@@ -123,8 +123,6 @@ export default class {
   }
 
   update() {
-    if (!this.bounds) return
-
     this.updateX()
     this.updateY()
   }

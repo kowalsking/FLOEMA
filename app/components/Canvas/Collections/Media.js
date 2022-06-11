@@ -15,6 +15,7 @@ export default class {
     this.createTexture()
     this.createProgram()
     this.createMesh()
+    this.createBounds({ sizes: this.sizes })
 
     this.extra = {
       x: 0,
@@ -119,9 +120,7 @@ export default class {
     this.mesh.position.y = (this.sizes.height / 2) - (this.mesh.scale.y / 2) - (this.y * this.sizes.height) + this.extra.y
   }
 
-  update(scroll, index) {
-    if (!this.bounds) return
-
+  update(scroll) {
     this.updateX(scroll)
     this.updateY()
 

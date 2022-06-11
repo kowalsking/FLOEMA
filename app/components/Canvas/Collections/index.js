@@ -37,6 +37,8 @@ export default class {
     this.createGeometry()
     this.createGallery()
 
+    this.onResize({ sizes: this.sizes })
+
     this.group.setParent(this.scene)
 
     this.show()
@@ -62,9 +64,11 @@ export default class {
   /**
    * Animations
    */
-  show() {
+  async show() {
+    await this.bounds
+
     if (this.transition) {
-      this.transition.animate(this.medias[0], _ => {
+      this.transition.animate(this.medias[0].mesh, _ => {
 
       })
     }
@@ -136,8 +140,6 @@ export default class {
    * Update.
    */
   update() {
-    if (!this.bounds) return
-
     this.scroll.target = GSAP.utils.clamp(-this.scroll.limit, 0, this.scroll.target)
 
     this.scroll.current = GSAP.utils.interpolate(this.scroll.current, this.scroll.target, this.scroll.lerp)

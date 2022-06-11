@@ -72,7 +72,6 @@ export default class {
   animate(element, onComplete) {
     if (this.transition === 'detail') {
       const timeline = GSAP.timeline({
-        delay: 0.5,
         onComplete
       })
 
@@ -93,7 +92,6 @@ export default class {
       })
     } else {
       const timeline = GSAP.timeline({
-        delay: 0.5,
         onComplete
       })
 
