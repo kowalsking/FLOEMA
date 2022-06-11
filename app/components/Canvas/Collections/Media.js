@@ -111,7 +111,7 @@ export default class {
     this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width) + this.extra.x
   }
 
-  update(scroll) {
+  update(scroll, index) {
     this.updateX(scroll)
 
     const amplitude = 0.1

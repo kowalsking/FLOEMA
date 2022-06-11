@@ -74,7 +74,9 @@ export default class {
   }
 
   hide() {
-
+    GSAP.to(this.program.uniforms.uAlpha, {
+      value: 0
+    })
   }
 
   /**
