@@ -61,7 +61,6 @@ export default class {
 
     this.updateScale(sizes)
     this.updateX()
-    this.updateY()
   }
 
   /**
@@ -92,7 +91,6 @@ export default class {
 
     this.createBounds(sizes)
     this.updateX(scroll && scroll.x)
-    this.updateY(scroll && scroll.y)
   }
 
   /**
