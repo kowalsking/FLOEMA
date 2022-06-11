@@ -62,7 +62,7 @@ export default class {
    */
   show() {
     if (this.transition) {
-      this.transition.animate(_ => {
+      this.transition.animate(this.mesh, _ => {
         this.program.uniforms.uAlpha.value = 1
       })
     }

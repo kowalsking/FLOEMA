@@ -52,36 +52,40 @@ export default class {
       const { index, medias } = element
       const media = medias[index]
 
-      console.log(media)
-
       this.createProgram(media.texture)
       this.createMesh(media.mesh)
+
+      this.transition = 'detail'
     } else {
       this.createProgram(element.texture)
       this.createMesh(element)
+
+      this.transition = 'collections'
     }
 
   }
+
   /**
    * Animations.
    */
-  animate(element, onComplete, flag) {
+
+  animate(element, onComplete) {
     if (this.transition === 'detail') {
       GSAP.to(this.mesh.scale, {
         duration: 1.5,
         ease: 'expo.inOut',
-        x: this.element.mesh.scale.x,
-        y: this.element.mesh.scale.y,
-        z: this.element.mesh.scale.z
+        x: element.mesh.scale.x,
+        y: element.mesh.scale.y,
+        z: element.mesh.scale.z
       })
 
       GSAP.to(this.mesh.position, {
         duration: 1.5,
         ease: 'expo.inOut',
         onComplete,
-        x: this.element.mesh.position.x,
-        y: this.element.mesh.position.y,
-        z: this.element.mesh.position.z
+        x: element.mesh.position.x,
+        y: element.mesh.position.y,
+        z: element.mesh.position.z
       })
     } else {
 

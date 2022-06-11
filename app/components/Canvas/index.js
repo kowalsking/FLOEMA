@@ -145,14 +145,12 @@ export default class Canvas {
         sizes: this.sizes,
         url
       })
+
+      this.transition.setElement(this.collections || this.detail)
     }
   }
 
   onChangeEnd(template) {
-    if (this.transition) {
-      this.transition.setElement(this.collections || this.detail)
-    }
-
     if (template === 'collections') {
       this.createCollections()
     } else if (this.collections) {
