@@ -92,7 +92,7 @@ export default class {
       z: element.position.z
     }, 0)
 
-    timeline.to(this.mesh.position, {
+    timeline.to(this.mesh.rotation, {
       duration: 1.5,
       ease: 'expo.inOut',
       x: element.rotation.x,
