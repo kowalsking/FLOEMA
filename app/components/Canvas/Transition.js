@@ -58,7 +58,7 @@ export default class {
       this.transition = 'detail'
     } else {
       this.createProgram(element.texture)
-      this.createMesh(element)
+      this.createMesh(element.mesh)
 
       this.transition = 'collections'
     }
@@ -75,6 +75,7 @@ export default class {
         delay: 0.5,
         onComplete
       })
+
       timeline.to(this.mesh.scale, {
         duration: 1.5,
         ease: 'expo.inOut',
@@ -91,7 +92,26 @@ export default class {
         z: element.position.z
       })
     } else {
+      const timeline = GSAP.timeline({
+        delay: 0.5,
+        onComplete
+      })
 
+      timeline.to(this.mesh.scale, {
+        duration: 1.5,
+        ease: 'expo.inOut',
+        x: element.scale.x,
+        y: element.scale.y,
+        z: element.scale.z
+      })
+
+      timeline.to(this.mesh.position, {
+        duration: 1.5,
+        ease: 'expo.inOut',
+        x: element.position.x,
+        y: element.position.y,
+        z: element.position.z
+      })
     }
   }
 }

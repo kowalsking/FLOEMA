@@ -5,12 +5,14 @@ import GSAP from 'gsap'
 import Prefix from 'prefix'
 
 export default class {
-  constructor({ gl, scene, sizes }) {
+  constructor({ gl, scene, sizes, transition }) {
     this.id = 'collections'
 
     this.group = new Transform()
     this.gl = gl
     this.scene = scene
+
+    this.transition = transition
 
     this.transformPrefix = Prefix('transform')
 
@@ -61,6 +63,12 @@ export default class {
    * Animations
    */
   show() {
+    if (this.transition) {
+      this.transition.animate(this.medias[0], _ => {
+
+      })
+    }
+
     map(this.medias, media => media.show())
   }
 
