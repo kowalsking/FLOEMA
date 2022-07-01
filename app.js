@@ -73,7 +73,7 @@ const handleRequest = async api => {
   })
 
   about.data.body.forEach(section => {
-    if (section.slice_type == 'gallery') {
+    if (section.slice_type === 'gallery') {
       section.items.forEach(item => {
         assets.push(item.image.url)
       })
